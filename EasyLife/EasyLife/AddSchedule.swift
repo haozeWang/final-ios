@@ -12,11 +12,13 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
 
     @IBOutlet weak var hours: UILabel!
     
+    @IBOutlet weak var UIPickerView: UIView!
     @IBOutlet weak var SetTime: UIButton!
     @IBOutlet weak var Minute: UILabel!
     @IBOutlet weak var Month: UILabel!
     @IBOutlet weak var YearPickerView: UIPickerView!
     @IBOutlet weak var ScheduleLabel: UILabel!
+ 
     @IBOutlet weak var TextField: UITextView!
     var flag = 1
     var day : [String] = []
@@ -152,7 +154,7 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
     @IBAction func SetTime(_ sender: Any) {
         if(flag == 1){
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
-                self.YearPickerView.center.y = 401
+                self.UIPickerView.center.y = 500
             }, completion:{finish in
                 self.SetTime.titleLabel?.text = "Finish"
             })
@@ -161,7 +163,7 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
         }
         else{
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
-                self.YearPickerView.center.y = 800
+                self.UIPickerView.center.y = 800
             }, completion: {finish in
                 self.SetTime.titleLabel?.text = "Set time"
             })
