@@ -1,0 +1,213 @@
+//
+//  AddSchedule.swift
+//  EasyLife
+//
+//  Created by 王昊泽 on 17/3/10.
+//  Copyright © 2017年 Haoze Wang. All rights reserved.
+//
+
+import UIKit
+
+class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPickerViewDataSource{
+
+    @IBOutlet weak var hours: UILabel!
+    
+    @IBOutlet weak var SetTime: UIButton!
+    @IBOutlet weak var Minute: UILabel!
+    @IBOutlet weak var Month: UILabel!
+    @IBOutlet weak var YearPickerView: UIPickerView!
+    @IBOutlet weak var ScheduleLabel: UILabel!
+    @IBOutlet weak var TextField: UITextView!
+    var flag = 1
+    var day : [String] = []
+    var hour: [String] = ["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"]
+    var minutes: [String] = ["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60"]
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        TextField.delegate = self
+        YearPickerView.delegate = self
+        YearPickerView.dataSource = self
+        TextField.text = "Please enter the description of the schedule"
+        TextField.textColor = UIColor.lightGray
+        SetTime.tintColor = UIColor.black
+        Month.text = "Today"
+        hours.text = "00:"
+        Minute.text = "00"
+        setTextField()
+        creatday()
+        print(minutes.count)
+        // Do any additional setup after loading the view.
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        TextField.setContentOffset(CGPoint.zero, animated: false)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func setTextField(){
+        TextField.layer.backgroundColor = UIColor.white.cgColor
+        TextField.layer.borderColor = UIColor.gray.cgColor
+        TextField.layer.borderWidth = 0.0
+        TextField.layer.cornerRadius = 5
+        TextField.layer.masksToBounds = false
+        TextField.layer.shadowRadius = 2.0
+        TextField.layer.shadowColor = UIColor.black.cgColor
+        TextField.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+        TextField.layer.shadowOpacity = 1.0
+        TextField.layer.shadowRadius = 1.0
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if(textView.text == "Please enter the description of the schedule"){
+            textView.text = ""
+            TextField.textColor = UIColor.black
+        }
+        textView.becomeFirstResponder()
+    }
+    
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 3
+    }
+    
+   
+    func pickerView(_ pickerView: UIPickerView,numberOfRowsInComponent component: Int) -> Int{
+        if component == 0
+        {
+            
+            let count = self.day.count
+            return count
+        }
+        else if component == 1
+        {
+            
+            let count = self.hour.count
+           return count
+        }
+        else if component == 2
+        {
+            
+            let count = self.minutes.count
+            return count
+        }
+        return 0
+    }
+
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if 0 == component
+        {
+            
+            let dictProvince = self.day[row]
+            return dictProvince
+        }
+        else if 1 == component
+        {
+            
+          return self.hour[row]
+            
+        }
+        else if 2 == component
+        {
+            
+           return self.minutes[row]
+        }
+        
+        return nil
+    }
+    
+    
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+        
+        if 0 == component
+        {
+            
+            Month.text = self.day[row]
+            
+        }
+        else if 1 == component
+        {
+           hours.text = "\(self.hour[row]as String): "
+        }
+        else if 2 == component
+        {
+           Minute.text = self.minutes[row]
+        }
+        
+    }
+    
+    
+    public func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat{
+        return CGFloat(127)
+    }
+    
+    @IBAction func SetTime(_ sender: Any) {
+        if(flag == 1){
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+                self.YearPickerView.center.y = 401
+            }, completion:{finish in
+                self.SetTime.titleLabel?.text = "Finish"
+            })
+            
+            flag = 2
+        }
+        else{
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+                self.YearPickerView.center.y = 800
+            }, completion: {finish in
+                self.SetTime.titleLabel?.text = "Set time"
+            })
+            flag = 1
+        }
+    }
+    
+    
+    func creatday(){
+        day.append("Today")
+        for i in 1 ... 90{
+            day.append(getstringfromdate(date: getnextdate(day: i)))
+        }
+    }
+    
+    
+    func getnextdate(day : Int)-> Date{
+        let calendar = Calendar.current
+        let twoDaysAgo = calendar.date(byAdding: .day, value: day , to: Date())
+        return twoDaysAgo!
+    }
+    
+    
+    func getstringfromdate(date : Date) -> String{
+        let dateformatter = DateFormatter()
+        
+        dateformatter.dateFormat = "MM/dd/EEE"
+        
+        let now = dateformatter.string(from: date)
+        return now
+
+    }
+    
+   
+    
+    
+    
+    
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}

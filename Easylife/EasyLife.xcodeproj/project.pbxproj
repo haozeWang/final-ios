@@ -31,6 +31,7 @@
 		B1E866701E736A1100ED5F09 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B1E8666D1E736A1100ED5F09 /* 2.jpg */; };
 		B1E866711E736A1100ED5F09 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B1E8666E1E736A1100ED5F09 /* 3.jpg */; };
 		B1E866721E736A1100ED5F09 /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B1E8666F1E736A1100ED5F09 /* 4.jpg */; };
+		B1E866741E73A53100ED5F09 /* AddSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E866731E73A53100ED5F09 /* AddSchedule.swift */; };
 		B1EEA1641E6FF907001116A6 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EEA1631E6FF907001116A6 /* Weather.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		B1E8666D1E736A1100ED5F09 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		B1E8666E1E736A1100ED5F09 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
 		B1E8666F1E736A1100ED5F09 /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
+		B1E866731E73A53100ED5F09 /* AddSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSchedule.swift; sourceTree = "<group>"; };
 		B1EEA1631E6FF907001116A6 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,6 +132,7 @@
 				B1E8666F1E736A1100ED5F09 /* 4.jpg */,
 				B1E8666B1E736A0900ED5F09 /* 1.jpg */,
 				B1B089511E6FBF900089ABB0 /* Main.storyboard */,
+				B1E866731E73A53100ED5F09 /* AddSchedule.swift */,
 				B1E866691E73517700ED5F09 /* weatherforecastTableViewCell.swift */,
 				B1E866671E73213000ED5F09 /* weatherforecastcell.swift */,
 				B1E866651E731E8900ED5F09 /* weatherforecast.swift */,
@@ -267,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9CD78A21E73793D0024F2A1 /* MapViewController.swift in Sources */,
+				B1E866741E73A53100ED5F09 /* AddSchedule.swift in Sources */,
 				B13AF9821E70AB90001EB206 /* CalanderViewController.swift in Sources */,
 				B1E866681E73213000ED5F09 /* weatherforecastcell.swift in Sources */,
 				B1B089501E6FBF900089ABB0 /* ViewController.swift in Sources */,
