@@ -65,9 +65,9 @@ class weatherforecast: UIViewController,UICollectionViewDataSource,UICollectionV
     override func viewDidLoad() {
         super.viewDidLoad()
         let date = NSDate()
-        let time = Int(date.timeIntervalSince1970)
         self.UICollectionView.backgroundColor = UIColor.clear
         self.UItableView.separatorStyle = .none
+        let  time = Int(date.timeIntervalSince1970)
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         let num = time % 4
         if(num == 0){
