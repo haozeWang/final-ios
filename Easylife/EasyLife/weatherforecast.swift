@@ -125,7 +125,7 @@ class weatherforecast: UIViewController,UICollectionViewDataSource,UICollectionV
     
     {
     
-            let weather = responsedate["weather"] as! (AnyObject)
+            let weather = responsedate["weather"] as! [AnyObject]
             let weather_clear = weather[0] as AnyObject
             let weather_date = weather_clear["description"] as! String
             let main = responsedate["main"] as! [String:AnyObject]

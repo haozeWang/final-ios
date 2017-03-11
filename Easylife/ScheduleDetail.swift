@@ -56,7 +56,7 @@ class ScheduleDetail: UIViewController {
                         
                     {
                         
-                        let weather = responsedate["weather"] as! (AnyObject)
+                        let weather = responsedate["weather"] as! [AnyObject]
                         
                         let weather_clear = weather[0] as AnyObject
                         let weather_date = weather_clear["description"] as! String

@@ -11,6 +11,9 @@
 
 #import <CommonCrypto/CommonHMAC.h>
 
+#import "DecodePolyline.h"
+
 #define EasyLife_Bridging_Header_h
 
 #endif /* EasyLife_Bridging_Header_h */
+

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9CD78A21E73793D0024F2A1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CD78A11E73793D0024F2A1 /* MapViewController.swift */; };
+		A9CD78A41E7379C90024F2A1 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CD78A31E7379C90024F2A1 /* LocationSearchTableViewController.swift */; };
+		A9CD78A61E7379F70024F2A1 /* MapSearchProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CD78A51E7379F70024F2A1 /* MapSearchProtocol.swift */; };
+		A9CD78A81E737A0E0024F2A1 /* ReachAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CD78A71E737A0E0024F2A1 /* ReachAbility.swift */; };
+		A9CD78AA1E737A370024F2A1 /* SharedNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CD78A91E737A370024F2A1 /* SharedNetworking.swift */; };
+		A9CD78AC1E737A5F0024F2A1 /* DecodePolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CD78AB1E737A5F0024F2A1 /* DecodePolyline.m */; };
 		B13AF9821E70AB90001EB206 /* CalanderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13AF9811E70AB90001EB206 /* CalanderViewController.swift */; };
 		B13AF98C1E70BEE7001EB206 /* CalenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13AF98B1E70BEE7001EB206 /* CalenderCell.swift */; };
 		B19709AB1E728BC6002841BF /* 003.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B19709AA1E728BC6002841BF /* 003.jpg */; };
@@ -39,6 +45,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A9CD78A11E73793D0024F2A1 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		A9CD78A31E7379C90024F2A1 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
+		A9CD78A51E7379F70024F2A1 /* MapSearchProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSearchProtocol.swift; sourceTree = "<group>"; };
+		A9CD78A71E737A0E0024F2A1 /* ReachAbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachAbility.swift; sourceTree = "<group>"; };
+		A9CD78A91E737A370024F2A1 /* SharedNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedNetworking.swift; sourceTree = "<group>"; };
+		A9CD78AB1E737A5F0024F2A1 /* DecodePolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecodePolyline.m; sourceTree = "<group>"; };
+		A9CD78AD1E737AB30024F2A1 /* DecodePolyline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DecodePolyline.h; sourceTree = "<group>"; };
 		B13AF9811E70AB90001EB206 /* CalanderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalanderViewController.swift; path = ../CalanderViewController.swift; sourceTree = "<group>"; };
 		B13AF98B1E70BEE7001EB206 /* CalenderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderCell.swift; sourceTree = "<group>"; };
 		B19709AA1E728BC6002841BF /* 003.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 003.jpg; sourceTree = "<group>"; };
@@ -124,6 +137,13 @@
 				B1B089541E6FBF900089ABB0 /* Assets.xcassets */,
 				B1B089561E6FBF900089ABB0 /* LaunchScreen.storyboard */,
 				B1B089591E6FBF900089ABB0 /* Info.plist */,
+				A9CD78A11E73793D0024F2A1 /* MapViewController.swift */,
+				A9CD78A31E7379C90024F2A1 /* LocationSearchTableViewController.swift */,
+				A9CD78A51E7379F70024F2A1 /* MapSearchProtocol.swift */,
+				A9CD78A71E737A0E0024F2A1 /* ReachAbility.swift */,
+				A9CD78A91E737A370024F2A1 /* SharedNetworking.swift */,
+				A9CD78AB1E737A5F0024F2A1 /* DecodePolyline.m */,
+				A9CD78AD1E737AB30024F2A1 /* DecodePolyline.h */,
 			);
 			path = EasyLife;
 			sourceTree = "<group>";
@@ -187,6 +207,7 @@
 				TargetAttributes = {
 					B1B089491E6FBF900089ABB0 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = Q6C8CX24JZ;
 						ProvisioningStyle = Automatic;
 					};
 					B1B0895D1E6FBF900089ABB0 = {
@@ -245,13 +266,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9CD78A21E73793D0024F2A1 /* MapViewController.swift in Sources */,
 				B13AF9821E70AB90001EB206 /* CalanderViewController.swift in Sources */,
 				B1E866681E73213000ED5F09 /* weatherforecastcell.swift in Sources */,
 				B1B089501E6FBF900089ABB0 /* ViewController.swift in Sources */,
+				A9CD78AA1E737A370024F2A1 /* SharedNetworking.swift in Sources */,
+				A9CD78A41E7379C90024F2A1 /* LocationSearchTableViewController.swift in Sources */,
 				B13AF98C1E70BEE7001EB206 /* CalenderCell.swift in Sources */,
+				A9CD78A61E7379F70024F2A1 /* MapSearchProtocol.swift in Sources */,
 				B19C97B31E70FE25000CD117 /* SharedNetwork.swift in Sources */,
 				B1E8666A1E73517700ED5F09 /* weatherforecastTableViewCell.swift in Sources */,
 				B19C97B71E71162E000CD117 /* ScheduleDetail.swift in Sources */,
+				A9CD78AC1E737A5F0024F2A1 /* DecodePolyline.m in Sources */,
+				A9CD78A81E737A0E0024F2A1 /* ReachAbility.swift in Sources */,
 				B1EEA1641E6FF907001116A6 /* Weather.swift in Sources */,
 				B1B0894E1E6FBF900089ABB0 /* AppDelegate.swift in Sources */,
 				B1E866661E731E8900ED5F09 /* weatherforecast.swift in Sources */,
@@ -391,6 +418,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Q6C8CX24JZ;
 				INFOPLIST_FILE = EasyLife/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Haozewang.EasyLife;
@@ -404,6 +432,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Q6C8CX24JZ;
 				INFOPLIST_FILE = EasyLife/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Haozewang.EasyLife;
