@@ -10,7 +10,8 @@ import UIKit
 import CoreData
 class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate{
     
-    
+    @IBOutlet weak var end_point: UILabel!
+    @IBOutlet weak var begin_point: UILabel!
     @IBOutlet weak var SetRemTime: UIButton!
     @IBOutlet weak var RemMinute: UILabel!
     @IBOutlet weak var Remhours: UILabel!
@@ -151,8 +152,8 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
         
         let moc = DataController().managedObjectContext
         let temp = Task.init(entity: NSEntityDescription.entity(forEntityName: "Task", in:moc)!, insertInto: moc)
-        temp.begin = ""
-        temp.end = ""
+        temp.begin = begin_point.text
+        temp.end = end_point.text
         temp.desc = TextField.text
         temp.title = UITextLabel.text
         let begin = "\(createstringfromdate(date: record_date_begin)) \(hours.text! as String)\(Minute.text! as String)"
@@ -326,6 +327,25 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
     }
     
     
+    func getstringfromdate_hour(date: Date) -> String{
+        let dateformatter = DateFormatter()
+        
+        dateformatter.dateFormat = "HH"
+        
+        let now = dateformatter.string(from: date)
+        return now
+    }
+    
+    func getstringfromdate_minute(date: Date) -> String{
+        let dateformatter = DateFormatter()
+        
+        dateformatter.dateFormat = "mm"
+        
+        let now = dateformatter.string(from: date)
+        return now
+    }
+
+    
     
     
     @IBAction func setLocation(_ sender: Any) {
@@ -362,7 +382,17 @@ extension AddSchedule: ScheduleSetLocationProtocol {
         self.sourceName = sourceName
         self.destName = destName
         self.expectedTime = expectedTime
-        
+        self.begin_point.text = sourceName
+        self.end_point.text = destName
+        let begin = "\(createstringfromdate(date: record_date_begin)) \(hours.text! as String)\(Minute.text! as String)"
+        var time = Int(getdatefromstring(string: begin).timeIntervalSince1970)
+        time = time - expectedTime
+        let date = NSDate(timeIntervalSince1970: TimeInterval(time))
+        RemMonth.text = getstringfromdate(date: date as Date)
+        Remhours.text = "\(getstringfromdate_hour(date: date as Date)):"
+        RemMinute.text = getstringfromdate_minute(date: date as Date)
+        print(destLatitude)
+        print(destLongitude)
         print(self.destName)
         print(self.expectedTime)
     }

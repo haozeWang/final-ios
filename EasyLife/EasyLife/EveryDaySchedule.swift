@@ -11,12 +11,17 @@ import CoreData
 class EveryDaySchedule: UITableViewController,UIActionSheetDelegate {
     
     var task: [Task]!
-    
-      override func viewDidLoad() {
+    var date : String!
+    override func viewDidLoad() {
         super.viewDidLoad()
-         let currdate = getstringfromdate(date: Date())
-         task =  schedule.scheduleInstance.fetchDate(date: currdate)
-         print(task.count)
+        if(date == nil){
+            let currdate = getstringfromdate(date: Date())
+            task =  schedule.scheduleInstance.fetchDate(date: currdate)
+        }
+        else{
+            task =  schedule.scheduleInstance.fetchDate(date: date)
+        }
+        print(task.count)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
