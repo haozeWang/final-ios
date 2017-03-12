@@ -8,8 +8,9 @@
 
 import UIKit
 
-class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPickerViewDataSource {
+class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate{
 
+    @IBOutlet weak var UITextLabel: UITextField!
     @IBOutlet weak var RemMinute: UILabel!
     @IBOutlet weak var Remhours: UILabel!
     @IBOutlet weak var RemMonth: UILabel!
@@ -42,9 +43,19 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
         Minute.text = "00"
         creatday()
         setTextField()
+        let myGesture = UITapGestureRecognizer(target: self, action:#selector(self.tappedAwayFunction(sender:)) )
+        self.view.addGestureRecognizer(myGesture)
         // Do any additional setup after loading the view.
     }
     
+    func tappedAwayFunction(sender: UITapGestureRecognizer){
+        TextField.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     func setTextField(){
         TextField.layer.backgroundColor = UIColor.white.cgColor

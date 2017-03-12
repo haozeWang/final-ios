@@ -184,7 +184,7 @@
                                         </view>
                                         <connections>
                                             <outlet property="timerLabel" destination="tf3-Dk-Zsn" id="KaA-aJ-Yin"/>
-                                            <segue destination="FXk-JR-gaj" kind="push" id="wDr-QF-l5f"/>
+                                            <segue destination="65U-SC-ed5" kind="push" id="Oyd-aq-rpc"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -236,6 +236,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I2H-XQ-ha8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1492" y="1030"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ayE-US-rt7">
+            <objects>
+                <viewController id="uPD-vj-DeN" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nXb-6M-dwd"/>
+                        <viewControllerLayoutGuide type="bottom" id="Nrt-p2-hLd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KuU-yq-vpA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="8lH-ss-XUf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wBg-3t-suQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="242" y="2103"/>
         </scene>
         <!--Schedule Detail-->
         <scene sceneID="UOh-Rb-jEa">
@@ -650,6 +669,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="M10-wN-fUy" id="XBl-Hr-cTa"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Begin Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEp-TJ-S4g">
                                 <rect key="frame" x="8" y="290" width="107" height="24"/>
@@ -668,6 +690,7 @@
                         <outlet property="SetTime" destination="BWc-ED-oEH" id="3qQ-1f-OXv"/>
                         <outlet property="TextField" destination="yoY-nB-zWS" id="LJH-8m-Vgi"/>
                         <outlet property="UIPickerView" destination="GAJ-Dg-zoH" id="6Gb-Eu-fmM"/>
+                        <outlet property="UITextLabel" destination="uEp-3d-0eI" id="b5u-Fp-aTU"/>
                         <outlet property="YearPickerView" destination="rOb-E1-Q09" id="VTY-nl-fVv"/>
                         <outlet property="hours" destination="a7z-IU-SRG" id="7pQ-1o-rbh"/>
                     </connections>
@@ -716,7 +739,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="FXk-JR-gaj" kind="push" id="ZYS-8s-l9F"/>
+                                    <segue destination="FXk-JR-gaj" kind="push" id="sye-rk-PKC"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -837,6 +860,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Ze7-IZ-eYT" id="yn0-54-UOV"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pO3-AK-W1B">
                                 <rect key="frame" x="8" y="219" width="54" height="30"/>
@@ -886,6 +912,7 @@
                         <outlet property="SetRemTime" destination="gZq-KC-IUj" id="ciB-KJ-zHk"/>
                         <outlet property="TextField" destination="SsG-FQ-EOo" id="WpV-Iy-9Fd"/>
                         <outlet property="UIPickerView" destination="yVu-h8-ieR" id="pXr-Ah-bcr"/>
+                        <outlet property="UITextLabel" destination="8xr-Ze-gzb" id="E9i-qV-EzH"/>
                         <outlet property="YearPickerView" destination="2nY-wi-FXM" id="Sqe-xM-4XV"/>
                         <outlet property="hours" destination="hkx-AS-7fp" id="kIb-NP-yGo"/>
                     </connections>
@@ -934,7 +961,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ZYS-8s-l9F"/>
+        <segue reference="Oyd-aq-rpc"/>
         <segue reference="zuz-Xw-aGK"/>
     </inferredMetricsTieBreakers>
 </document>

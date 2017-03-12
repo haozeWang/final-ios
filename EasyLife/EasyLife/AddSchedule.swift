@@ -8,10 +8,11 @@
 
 import UIKit
 
-class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPickerViewDataSource{
+class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate{
 
     @IBOutlet weak var hours: UILabel!
     
+    @IBOutlet weak var UITextLabel: UITextField!
     @IBOutlet weak var UIPickerView: UIView!
     @IBOutlet weak var SetTime: UIButton!
     @IBOutlet weak var Minute: UILabel!
@@ -29,6 +30,7 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
         TextField.delegate = self
         YearPickerView.delegate = self
         YearPickerView.dataSource = self
+        UITextLabel.delegate = self
         TextField.text = "Please enter the description of the schedule"
         TextField.textColor = UIColor.lightGray
         SetTime.tintColor = UIColor.black
@@ -37,10 +39,20 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
         Minute.text = "00"
         setTextField()
         creatday()
-        print(minutes.count)
+        let myGesture = UITapGestureRecognizer(target: self, action:#selector(self.tappedAwayFunction(sender:)) )
+        self.view.addGestureRecognizer(myGesture)
         // Do any additional setup after loading the view.
     }
-
+    
+    func tappedAwayFunction(sender: UITapGestureRecognizer){
+        TextField.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         TextField.setContentOffset(CGPoint.zero, animated: false)
@@ -73,6 +85,7 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
         textView.becomeFirstResponder()
     }
     
+   // func tappedAwayFunction
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 3
