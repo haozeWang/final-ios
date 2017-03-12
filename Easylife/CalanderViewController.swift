@@ -16,7 +16,7 @@ class CalanderViewController: UIViewController,UITableViewDelegate,UICollectionV
     @IBOutlet weak var CollectionView: UICollectionView!
     var date:Date!
     var weekArray:[String] = []
-    
+    var rec_month = getstringfromdate_M(date: Date())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,41 +97,54 @@ class CalanderViewController: UIViewController,UITableViewDelegate,UICollectionV
     func showLabelString(_ date:Date){
         var month: String!
         if((currentMonth(date) == 1)) {
-           month = "Jan"
+            month = "Jan"
+            rec_month = "01"
         }
         else if((currentMonth(date) == 2)) {
             month = "Feb"
+            rec_month = "02"
         }
         else if((currentMonth(date) == 3)) {
             month = "Mar"
+            rec_month = "03"
         }
         else if((currentMonth(date) == 4)) {
             month = "Apr"
+            rec_month = "04"
         }
         else if((currentMonth(date) == 5)) {
             month = "May"
+            rec_month = "05"
         }
         else if((currentMonth(date) == 6)) {
             month = "Jun"
+            rec_month = "06"
         }
         else if((currentMonth(date) == 7)) {
             month = "Jul"
+            rec_month = "07"
         }
         else if((currentMonth(date) == 8)) {
             month = "Aug"
+            rec_month = "08"
         }
         else if((currentMonth(date) == 9)) {
             month = "Sep"
+            rec_month = "09"
         }
         else if((currentMonth(date) == 10)) {
             month = "Oct"
+            rec_month = "10"
         }
         else if((currentMonth(date) == 11)) {
             month = "Nov"
+            rec_month = "11"
         }
         else if((currentMonth(date) == 12)) {
             month = "Dec"
+            rec_month = "12"
         }
+        
         
         showLabel.text = "\(month as! String)  \(self.currentYear(date))"
     }
@@ -229,6 +242,22 @@ class CalanderViewController: UIViewController,UITableViewDelegate,UICollectionV
     }
 
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "senddate"{
+            let des = segue.destination as! EveryDaySchedule
+            let cell = sender as! CalenderCell
+            _ = self.CollectionView.indexPath(for: cell)
+            let a = showLabel.text
+            let last2 = a?.substring(from:(a?.index((a?.endIndex)!, offsetBy: -2))!)
+            var day = cell.timerLabel.text! as String
+            if(day.characters.count == 1){
+                day = "0\(day)"
+            }
+            let date = "\(rec_month)/\(day as String)/\(last2! as String)"
+            print(date)
+            des.date = date
+        }
+    }
     
     /*
     // MARK: - Navigation
@@ -240,5 +269,15 @@ class CalanderViewController: UIViewController,UITableViewDelegate,UICollectionV
     }
     */
 
+}
+
+func getstringfromdate_M(date : Date) -> String{
+    let dateformatter = DateFormatter()
+    
+    dateformatter.dateFormat = "MM"
+    
+    let now = dateformatter.string(from: date)
+    return now
+    
 }
 
