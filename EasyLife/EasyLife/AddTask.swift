@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreData
 class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate{
 
     @IBOutlet weak var UITextLabel: UITextField!
@@ -25,6 +25,9 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
     var flag = 1
     var changeflag = 1
     var day : [String] = []
+    var date : [Date] = []
+    var record_date_begin : Date!
+    var record_date_end : Date!
     var hour: [String] = ["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"]
     
     var minutes: [String] = ["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60"]
@@ -90,13 +93,29 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
     }
     
     @IBAction func Submit(_ sender: Any) {
+        let moc = DataController().managedObjectContext
+        let temp = Task.init(entity: NSEntityDescription.entity(forEntityName: "Task", in:moc)!, insertInto: moc)
+        temp.begin = ""
+        temp.end = ""
+        temp.desc = TextField.text
+        temp.title = UITextLabel.text
+        let begin = "\(createstringfromdate(date: record_date_begin)) \(hours.text! as String)\(Minute.text! as String)"
+        let end = "\(createstringfromdate(date: record_date_end)) \(Remhours.text! as String)\(RemMinute.text! as String)"
+        temp.fin_time = getdatefromstring(string: begin) as NSDate?
+        temp.ram_time = getdatefromstring(string: end) as NSDate?
+        temp.date = getstringfromdate_yy(date: Date())
+        temp.id = Int64(Date().timeIntervalSince1970)
+        print(temp.id)
+        schedule.scheduleInstance.insertDate(schedule: temp)
         self.dismiss(animated: true, completion: nil);
     }
     
     
     func creatday(){
         day.append("Today")
+        date.append(Date())
         for i in 1 ... 90{
+            
             day.append(getstringfromdate(date: getnextdate(day: i)))
         }
     }
@@ -105,6 +124,7 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
     func getnextdate(day : Int)-> Date{
         let calendar = Calendar.current
         let twoDaysAgo = calendar.date(byAdding: .day, value: day , to: Date())
+        date.append(twoDaysAgo!)
         return twoDaysAgo!
     }
     
@@ -167,17 +187,19 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
         if 0 == component
         {
             if(changeflag == 1){
-                Month.text = self.day[row]}
+                Month.text = self.day[row]
+            record_date_begin = self.date[row]}
             else{
-                RemMonth.text = self.day[row]
+                self.RemMonth.text = self.day[row]
+                self.record_date_end = self.date[row]
             }
         }
         else if 1 == component
         {
             if(changeflag == 1){
-            hours.text = "\(self.hour[row]as String): "}
+            hours.text = "\(self.hour[row]as String):"}
             else{
-                Remhours.text = "\(self.hour[row]as String): "
+                Remhours.text = "\(self.hour[row]as String):"
             }
     
         }
@@ -207,6 +229,29 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
         let now = dateformatter.string(from: date)
         return now
         
+    }
+    func getstringfromdate_yy(date: Date) -> String{
+        let dateformatter = DateFormatter()
+        
+        dateformatter.dateFormat = "MM/dd/yy"
+        
+        let now = dateformatter.string(from: date)
+        return now
+    }
+    
+    func createstringfromdate(date : Date)->String{
+        let dateformatter = DateFormatter()
+        
+        dateformatter.dateFormat = "yy/MM/dd/EEE"
+        
+        let now = dateformatter.string(from: date)
+        return now
+    }
+    
+    func getdatefromstring(string: String)->Date{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yy/MM/dd/EEE HH:mm"
+        return formatter.date(from: string)!
     }
 
     @IBAction func SetBeginTime(_ sender: Any) {

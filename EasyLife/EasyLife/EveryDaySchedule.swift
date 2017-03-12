@@ -7,12 +7,17 @@
 //
 
 import UIKit
-
+import CoreData
 class EveryDaySchedule: UITableViewController,UIActionSheetDelegate {
-
+    
+    var task: [Task]!
+    
       override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+         let currdate = getstringfromdate(date: Date())
+         task =  schedule.scheduleInstance.fetchDate(date: currdate)
+         print(task.count)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -29,14 +34,23 @@ class EveryDaySchedule: UITableViewController,UIActionSheetDelegate {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return task.count
+        
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 1
     }
-
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Daytablecell", for: indexPath) as! EveryDayScheduleCell
+        let issue = task[indexPath.row]
+        cell.title.text = issue.title
+        return cell
+    }
+    
+ 
     
     @IBAction func AddSchedule(_ sender: Any) {
         let actionSheetController: UIAlertController = UIAlertController(title: "Please select", message: "Option to select", preferredStyle: .actionSheet)
@@ -139,3 +153,15 @@ class EveryDaySchedule: UITableViewController,UIActionSheetDelegate {
     */
 
 }
+
+func getstringfromdate(date : Date) -> String{
+    let dateformatter = DateFormatter()
+    
+    dateformatter.dateFormat = "MM/dd/yy"
+    
+    let now = dateformatter.string(from: date)
+    return now
+    
+}
+
+
