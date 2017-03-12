@@ -1,29 +1,33 @@
 //
-//  AddSchedule.swift
+//  AddTask.swift
 //  EasyLife
 //
-//  Created by 王昊泽 on 17/3/10.
+//  Created by 王昊泽 on 17/3/11.
 //  Copyright © 2017年 Haoze Wang. All rights reserved.
 //
 
 import UIKit
 
-class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPickerViewDataSource{
+class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPickerViewDataSource {
 
-    @IBOutlet weak var hours: UILabel!
-    
-    @IBOutlet weak var UIPickerView: UIView!
-    @IBOutlet weak var SetTime: UIButton!
-    @IBOutlet weak var Minute: UILabel!
+    @IBOutlet weak var RemMinute: UILabel!
+    @IBOutlet weak var Remhours: UILabel!
+    @IBOutlet weak var RemMonth: UILabel!
     @IBOutlet weak var Month: UILabel!
-    @IBOutlet weak var YearPickerView: UIPickerView!
-    @IBOutlet weak var ScheduleLabel: UILabel!
-    
+    @IBOutlet weak var SetBeginTime: UIButton!
+    @IBOutlet weak var Minute: UILabel!
+    @IBOutlet weak var hours: UILabel!
+    @IBOutlet weak var UIPickerView: UIView!
     @IBOutlet weak var TextField: UITextView!
+    @IBOutlet weak var SetRemTime: UIButton!
+    @IBOutlet weak var YearPickerView: UIPickerView!
     var flag = 1
+    var changeflag = 1
     var day : [String] = []
     var hour: [String] = ["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"]
+    
     var minutes: [String] = ["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         TextField.delegate = self
@@ -31,24 +35,14 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
         YearPickerView.dataSource = self
         TextField.text = "Please enter the description of the schedule"
         TextField.textColor = UIColor.lightGray
-        SetTime.tintColor = UIColor.black
+        SetBeginTime.tintColor = UIColor.black
+        SetRemTime.tintColor = UIColor.black
         Month.text = "Today"
         hours.text = "00:"
         Minute.text = "00"
-        setTextField()
         creatday()
-        print(minutes.count)
+        setTextField()
         // Do any additional setup after loading the view.
-    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        TextField.setContentOffset(CGPoint.zero, animated: false)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
@@ -65,6 +59,7 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
         TextField.layer.shadowRadius = 1.0
     }
     
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
         if(textView.text == "Please enter the description of the schedule"){
             textView.text = ""
@@ -74,109 +69,17 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
     }
     
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 3
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
-   
-    func pickerView(_ pickerView: UIPickerView,numberOfRowsInComponent component: Int) -> Int{
-        if component == 0
-        {
-            
-            let count = self.day.count
-            return count
-        }
-        else if component == 1
-        {
-            
-            let count = self.hour.count
-           return count
-        }
-        else if component == 2
-        {
-            
-            let count = self.minutes.count
-            return count
-        }
-        return 0
-    }
-
-    
-    
-    @IBAction func GiveupSchedule(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil);
-    }
-    @IBAction func SubmitSchedule(_ sender: Any) {
+    @IBAction func GiveupTask(_ sender: Any) {
         self.dismiss(animated: true, completion: nil);
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if 0 == component
-        {
-            
-            let dictProvince = self.day[row]
-            return dictProvince
-        }
-        else if 1 == component
-        {
-            
-          return self.hour[row]
-            
-        }
-        else if 2 == component
-        {
-            
-           return self.minutes[row]
-        }
-        
-        return nil
-    }
-    
-    
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
-    {
-        
-        if 0 == component
-        {
-            
-            Month.text = self.day[row]
-            
-        }
-        else if 1 == component
-        {
-           hours.text = "\(self.hour[row]as String): "
-        }
-        else if 2 == component
-        {
-           Minute.text = self.minutes[row]
-        }
-        
-    }
-    
-    
-    public func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat{
-        return CGFloat(127)
-    }
-    
-    @IBAction func SetTime(_ sender: Any) {
-        if(flag == 1){
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
-                self.UIPickerView.center.y = 500
-            }, completion:{finish in
-                self.SetTime.titleLabel?.text = "Finish"
-            })
-            
-            flag = 2
-        }
-        else{
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
-                self.UIPickerView.center.y = 800
-            }, completion: {finish in
-                self.SetTime.titleLabel?.text = "Set time"
-            })
-            flag = 1
-        }
+    @IBAction func Submit(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil);
     }
     
     
@@ -195,6 +98,96 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
     }
     
     
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 3
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView,numberOfRowsInComponent component: Int) -> Int{
+        if component == 0
+        {
+            
+            let count = self.day.count
+            return count
+        }
+        else if component == 1
+        {
+            
+            let count = self.hour.count
+            return count
+        }
+        else if component == 2
+        {
+            
+            let count = self.minutes.count
+            return count
+        }
+        return 0
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if 0 == component
+        {
+            
+            let dictProvince = self.day[row]
+            return dictProvince
+        }
+        else if 1 == component
+        {
+            
+            return self.hour[row]
+            
+        }
+        else if 2 == component
+        {
+            
+            return self.minutes[row]
+        }
+        
+        return nil
+    }
+    
+    
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+        
+        if 0 == component
+        {
+            if(changeflag == 1){
+                Month.text = self.day[row]}
+            else{
+                RemMonth.text = self.day[row]
+            }
+        }
+        else if 1 == component
+        {
+            if(changeflag == 1){
+            hours.text = "\(self.hour[row]as String): "}
+            else{
+                Remhours.text = "\(self.hour[row]as String): "
+            }
+    
+        }
+        else if 2 == component
+        {
+            if(changeflag == 1){
+                Minute.text = self.minutes[row]}
+            else{
+                RemMinute.text = self.minutes[row]
+            }
+            
+        }
+        
+    }
+    
+    
+    public func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat{
+        return CGFloat(127)
+    }
+    
+    
     func getstringfromdate(date : Date) -> String{
         let dateformatter = DateFormatter()
         
@@ -202,14 +195,65 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
         
         let now = dateformatter.string(from: date)
         return now
+        
+    }
+
+    @IBAction func SetBeginTime(_ sender: Any) {
+        if(flag == 1){
+            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseOut, animations: {
+                self.UIPickerView.center.y = 500
+                self.SetRemTime.isHidden = true
+            }, completion:{finish in
+                self.SetBeginTime.titleLabel?.text = "Finish"
+                
+            })
+            
+            flag = 2
+        }
+        else{
+            
+            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseOut, animations: {
+                self.UIPickerView.center.y = 800
+                self.SetRemTime.isHidden = false
+            }, completion: {finish in
+                self.SetBeginTime.titleLabel?.text = "Set time"
+               
+            })
+            flag = 1
+        }
 
     }
+ 
     
-   
-    
-    
-    
-    
+    @IBAction func SetRemTime(_ sender: Any) {
+        if(flag == 1){
+            changeflag = 2
+            SetBeginTime.isEnabled = false
+            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseOut, animations: {
+                self.UIPickerView.center.y = 600
+               
+            }, completion:{finish in
+                self.SetRemTime.titleLabel?.text = "Finish"
+                
+            })
+            
+            flag = 2
+        }
+        else{
+            changeflag = 1
+            SetBeginTime.isEnabled = true
+            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseOut, animations: {
+                self.UIPickerView.center.y = 800
+                
+            }, completion: {finish in
+                self.SetRemTime.titleLabel?.text = "Set time"
+                
+            })
+            flag = 1
+        }
+
+    }
+
     /*
     // MARK: - Navigation
 
