@@ -11,6 +11,8 @@ import UIKit
 class EveryDayScheduleCell: UITableViewCell {
 
     @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var fin_time: UILabel!
+    @IBOutlet weak var rem_time: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

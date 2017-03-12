@@ -36,6 +36,7 @@ class schedule: NSObject {
         }
     }
     
+    
     func fetchDate(date : String) -> [Task]{
         let moc = DataController().managedObjectContext
         let TaskFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
