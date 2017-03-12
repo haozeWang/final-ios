@@ -17,7 +17,6 @@ class EveryDaySchedule: UITableViewController,UIActionSheetDelegate {
         
          let currdate = getstringfromdate(date: Date())
          task =  schedule.scheduleInstance.fetchDate(date: currdate)
-         print(task.count)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -34,19 +33,21 @@ class EveryDaySchedule: UITableViewController,UIActionSheetDelegate {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return task.count
+        return 1
         
     }
-
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return task.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Daytablecell", for: indexPath) as! EveryDayScheduleCell
         let issue = task[indexPath.row]
         cell.title.text = issue.title
+        cell.fin_time.text = createstringfromdate(date: issue.fin_time as! Date)
         return cell
     }
     
@@ -163,5 +164,15 @@ func getstringfromdate(date : Date) -> String{
     return now
     
 }
+
+func createstringfromdate(date : Date)->String{
+    let dateformatter = DateFormatter()
+    
+    dateformatter.dateFormat = "MM/dd/EEE HH:mm"
+    
+    let now = dateformatter.string(from: date)
+    return now
+}
+
 
 

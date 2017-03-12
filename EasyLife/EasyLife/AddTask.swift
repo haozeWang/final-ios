@@ -22,6 +22,8 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
     @IBOutlet weak var TextField: UITextView!
     @IBOutlet weak var SetRemTime: UIButton!
     @IBOutlet weak var YearPickerView: UIPickerView!
+    var temp_view : String!
+    var temp_field : String!
     var flag = 1
     var changeflag = 1
     var day : [String] = []
@@ -44,6 +46,11 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
         Month.text = "Today"
         hours.text = "00:"
         Minute.text = "00"
+        Remhours.text = "00:"
+        RemMinute.text = "00"
+        RemMonth.text = "Today"
+        record_date_begin = Date()
+        record_date_end = Date()
         creatday()
         setTextField()
         let myGesture = UITapGestureRecognizer(target: self, action:#selector(self.tappedAwayFunction(sender:)) )
@@ -52,10 +59,14 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
     }
     
     func tappedAwayFunction(sender: UITapGestureRecognizer){
+        print(TextField.text)
+        temp_view = TextField.text
         TextField.resignFirstResponder()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print(textField.text)
+        temp_field = textField.text
         textField.resignFirstResponder()
         return true
     }
@@ -82,6 +93,10 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
         textView.becomeFirstResponder()
     }
     
+    func textViewDidEndEditing(_ textView: UITextView) {
+        temp_view = TextField.text
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -97,8 +112,8 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
         let temp = Task.init(entity: NSEntityDescription.entity(forEntityName: "Task", in:moc)!, insertInto: moc)
         temp.begin = ""
         temp.end = ""
-        temp.desc = TextField.text
-        temp.title = UITextLabel.text
+        temp.desc = temp_view
+        temp.title = temp_field
         let begin = "\(createstringfromdate(date: record_date_begin)) \(hours.text! as String)\(Minute.text! as String)"
         let end = "\(createstringfromdate(date: record_date_end)) \(Remhours.text! as String)\(RemMinute.text! as String)"
         temp.fin_time = getdatefromstring(string: begin) as NSDate?
