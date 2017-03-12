@@ -22,6 +22,12 @@ class EveryDayScheduleCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.title.text = ""
+        self.fin_time.text = ""
+    }
 
 }
 

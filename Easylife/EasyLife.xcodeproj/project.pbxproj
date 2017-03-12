@@ -47,6 +47,7 @@
 		B1E866721E736A1100ED5F09 /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B1E8666F1E736A1100ED5F09 /* 4.jpg */; };
 		B1E866741E73A53100ED5F09 /* AddSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E866731E73A53100ED5F09 /* AddSchedule.swift */; };
 		B1EEA1641E6FF907001116A6 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EEA1631E6FF907001116A6 /* Weather.swift */; };
+		B1FBBF8B1E75CD8B00058B74 /* UpdateViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FBBF8A1E75CD8B00058B74 /* UpdateViewProtocal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		B1E8666F1E736A1100ED5F09 /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
 		B1E866731E73A53100ED5F09 /* AddSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSchedule.swift; sourceTree = "<group>"; };
 		B1EEA1631E6FF907001116A6 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		B1FBBF8A1E75CD8B00058B74 /* UpdateViewProtocal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateViewProtocal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 				A9B455001E74969000F0C71D /* MyRoute.swift */,
 				A9CD78B21E73C0940024F2A1 /* SelectLocationViewController.swift */,
 				A9CD78B41E73E0990024F2A1 /* LocationSearchProtocol.swift */,
+				B1FBBF8A1E75CD8B00058B74 /* UpdateViewProtocal.swift */,
 				A9B455021E75107F00F0C71D /* PlaceDetailViewController.swift */,
 				A97D866B1E75D4E300DA12F7 /* ScheduleSetLocationProtocol.swift */,
 			);
@@ -332,6 +335,7 @@
 				B19C97B31E70FE25000CD117 /* SharedNetwork.swift in Sources */,
 				B116CD741E75061800508FEC /* Task+CoreDataClass.swift in Sources */,
 				B1E8666A1E73517700ED5F09 /* weatherforecastTableViewCell.swift in Sources */,
+				B1FBBF8B1E75CD8B00058B74 /* UpdateViewProtocal.swift in Sources */,
 				B19C97B71E71162E000CD117 /* ScheduleDetail.swift in Sources */,
 				B116CD6D1E74EE2E00508FEC /* schedule.swift in Sources */,
 				A9CD78AC1E737A5F0024F2A1 /* DecodePolyline.m in Sources */,

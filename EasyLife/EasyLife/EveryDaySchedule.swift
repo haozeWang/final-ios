@@ -14,9 +14,9 @@ class EveryDaySchedule: UITableViewController,UIActionSheetDelegate {
     
       override func viewDidLoad() {
         super.viewDidLoad()
-        
          let currdate = getstringfromdate(date: Date())
          task =  schedule.scheduleInstance.fetchDate(date: currdate)
+         print(task.count)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -45,16 +45,32 @@ class EveryDaySchedule: UITableViewController,UIActionSheetDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Daytablecell", for: indexPath) as! EveryDayScheduleCell
+            let issue = task[indexPath.row]
+            cell.title.text = issue.title
+            if let time = issue.fin_time {
+                cell.fin_time.text = createstringfromdate(date: time as Date)}
+            return cell
+
+        /*
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Daytablecell", for: indexPath) as! EveryDayScheduleCell
         let issue = task[indexPath.row]
         cell.title.text = issue.title
+<<<<<<< Updated upstream
         if let time = issue.fin_time{
             cell.fin_time.text = createstringfromdate(date: time as Date)
         }
         return cell
+=======
+        if let time = issue.fin_time {
+            cell.fin_time.text = createstringfromdate(date: time as Date)}*/
     }
-    
+    /*
+    func updatadayschedule(){
+        tableView.reloadData()
+>>>>>>> Stashed changes
+    }
  
-    
+   */
     @IBAction func AddSchedule(_ sender: Any) {
         let actionSheetController: UIAlertController = UIAlertController(title: "Please select", message: "Option to select", preferredStyle: .actionSheet)
         
@@ -79,26 +95,9 @@ class EveryDaySchedule: UITableViewController,UIActionSheetDelegate {
         actionSheetController.addAction(deleteActionButton)
         self.present(actionSheetController, animated: true, completion: nil)
 
-        /*
-        let alertController = UIAlertController (title: "Type", message: "Choose which type of schedule you want to make", preferredStyle: .alert)
-        
-        let addTravel = UIAlertAction(title: "I need use map to estimate time and set path", style: .default) { (_) -> Void in
-            let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddSchedule") as UIViewController
-            self.present(viewController, animated: true, completion: nil)
-        }
-        
-        let addTask = UIAlertAction(title: "I do not need map.", style: .default){(_) -> Void in
-            let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddTask") as UIViewController
-            self.present(viewController, animated: true, completion: nil)
-        }
-        alertController.addAction(addTravel)
-        alertController.addAction(addTask)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-        alertController.addAction(cancelAction)
-        
-        present(alertController, animated: true, completion: nil)
- */
     }
+    
+    
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

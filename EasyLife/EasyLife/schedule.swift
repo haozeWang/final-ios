@@ -79,3 +79,12 @@ class schedule: NSObject {
     }
     
 }
+
+func getstringfromdate_yy(date: Date) -> String{
+    let dateformatter = DateFormatter()
+    
+    dateformatter.dateFormat = "MM/dd/yy"
+    
+    let now = dateformatter.string(from: date)
+    return now
+}

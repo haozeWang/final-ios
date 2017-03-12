@@ -20,8 +20,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="irh-XQ-RFe" kind="relationship" relationship="viewControllers" id="JHI-0w-xYe"/>
                         <segue destination="eQh-5e-AEv" kind="relationship" relationship="viewControllers" id="SFc-Fw-pdp"/>
+                        <segue destination="irh-XQ-RFe" kind="relationship" relationship="viewControllers" id="JHI-0w-xYe"/>
                         <segue destination="xbr-Nu-MAR" kind="relationship" relationship="viewControllers" id="vS4-bV-tar"/>
                         <segue destination="xEO-ay-oDH" kind="relationship" relationship="viewControllers" id="cIR-3T-pfn"/>
                     </connections>
@@ -556,7 +556,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wBg-3t-suQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="242" y="2103"/>
+            <point key="canvasLocation" x="-74" y="2087"/>
         </scene>
         <!--Schedule Detail-->
         <scene sceneID="UOh-Rb-jEa">
@@ -650,7 +650,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SKx-Id-LTS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1069.5999999999999" y="2102.698650674663"/>
+            <point key="canvasLocation" x="993" y="2088"/>
         </scene>
         <!--Weatherforecast-->
         <scene sceneID="ilA-KW-eQ4">
@@ -827,7 +827,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xgf-9p-a9J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2040.8" y="2102.698650674663"/>
+            <point key="canvasLocation" x="1999" y="2087"/>
         </scene>
         <!--Add Schedule-->
         <scene sceneID="7DB-BV-0HW">
@@ -1057,7 +1057,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W9U-bn-KaL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+
             <point key="canvasLocation" x="4167.1999999999998" y="1833.7331334332835"/>
+
+            <point key="canvasLocation" x="3166" y="1907"/>
+
         </scene>
         <!--Every Day Schedule-->
         <scene sceneID="R70-Jg-Kut">
@@ -1068,21 +1072,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Daytabelcell" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Daytablecell" rowHeight="83" id="Sze-hF-rQ4" customClass="EveryDayScheduleCell" customModule="EasyLife" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Daytablecell" rowHeight="83" id="Sze-hF-rQ4" customClass="EveryDayScheduleCell" customModule="EasyLife" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="83"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sze-hF-rQ4" id="TLa-2K-bzU">
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="83"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBD-3Q-MvL">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBD-3Q-MvL">
                                             <rect key="frame" x="100" y="0.0" width="242" height="47"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lY-vd-MGk">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lY-vd-MGk">
                                             <rect key="frame" x="100" y="51" width="242" height="27"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1288,7 +1292,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OpH-dO-Mjn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+
             <point key="canvasLocation" x="5044" y="1202.2488755622189"/>
+
+            <point key="canvasLocation" x="4100" y="1907"/>
+
         </scene>
         <!--Account-->
         <scene sceneID="3JQ-vL-ByE">
@@ -1344,6 +1352,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sa2-m1-sd3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-951" y="1487"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="7Q0-bC-8nM">
