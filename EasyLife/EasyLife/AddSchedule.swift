@@ -152,8 +152,8 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
         
         let moc = DataController().managedObjectContext
         let temp = Task.init(entity: NSEntityDescription.entity(forEntityName: "Task", in:moc)!, insertInto: moc)
-        temp.begin = ""
-        temp.end = ""
+        temp.begin = begin_point.text
+        temp.end = end_point.text
         temp.desc = TextField.text
         temp.title = UITextLabel.text
         let begin = "\(createstringfromdate(date: record_date_begin)) \(hours.text! as String)\(Minute.text! as String)"
@@ -391,8 +391,8 @@ extension AddSchedule: ScheduleSetLocationProtocol {
         RemMonth.text = getstringfromdate(date: date as Date)
         Remhours.text = "\(getstringfromdate_hour(date: date as Date)):"
         RemMinute.text = getstringfromdate_minute(date: date as Date)
-        print(self.destName)
-        print(self.expectedTime)
+        print(destLatitude)
+        print(destLongitude)
         print(self.destName)
         print(self.expectedTime)
     }
