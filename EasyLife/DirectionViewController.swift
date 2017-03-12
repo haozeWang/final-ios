@@ -101,7 +101,7 @@ class DirectionViewController: UIViewController, UITabBarDelegate{
         
         
         
-        mapView.mapType = .satellite
+         mapView.mapType = .satellite
     }
     
 

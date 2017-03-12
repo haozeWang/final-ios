@@ -128,6 +128,7 @@ class PlaceDetailViewController: UIViewController {
             }
             
             // load reviews
+            // here we use a scrollView to show reviews
             if let reviews = locationDetail!["reviews"] as? [AnyObject] {
                 let n = reviews.count
                 let frameWidth = reviewsScrollView.frame.size.width
@@ -136,23 +137,73 @@ class PlaceDetailViewController: UIViewController {
                                                        height: frameHeight * CGFloat(n))
                 for i in 0..<n {
                     guard let review = reviews[i] as? [String: AnyObject] else {    continue}
+                    // author
                     guard let author = review["author_name"] as? String else { continue}
+                    // time
                     guard let timeInt = review["time"] as? Int else {   continue}
                     let time = Date(timeIntervalSince1970: TimeInterval(timeInt))
                     
-                    let authorLabel = UILabel(frame: CGRect(x: 10,
+                    // comments
+                    guard let comment = review["text"] as? String else {    continue}
+                    
+                    // rating
+                    guard let rating = review["rating"] as? Int else {  continue}
+                    
+                    let authorLabel = UILabel(frame: CGRect(x: 165,
                                                             y: CGFloat(5) + frameHeight * CGFloat(i),
                                                             width: 200, height: 30))
-                    let timeLabel = UILabel(frame: CGRect(x: 10,
+                    let timeLabel = UILabel(frame: CGRect(x: 165,
                                                           y: CGFloat(35) + frameHeight * CGFloat(i),
                                                           width: 200, height: 20))
+                    let commentLabel = UILabel(frame: CGRect(x: 10,
+                                                             y: CGFloat(60) + frameHeight * CGFloat(i),
+                                                             width: 355,
+                                                             height: frameHeight - CGFloat(70)))
+                    
+                    // split line
+                    let splitLine = UIView(frame: CGRect(x: 5,
+                                                         y: CGFloat(0) + frameHeight * CGFloat(i),
+                                                         width: 365, height: 1))
+                    splitLine.backgroundColor = UIColor.lightGray
+                    
+                    // rating stars
+                    var ratingStars = [UIImageView]()
+                    for j in 0..<5 {
+                        ratingStars.append(UIImageView(frame: CGRect(x: CGFloat(10 + 25 * j),
+                                                                     y: CGFloat(10) + frameHeight * CGFloat(i),
+                                                                     width: 25, height: 25)))
+                        reviewsScrollView.addSubview(ratingStars[j])
+                    }
+                    if rating >= 1 {
+                        ratingStars[0].image = UIImage(named: "star")
+                    }
+                    if rating >= 2 {
+                        ratingStars[1].image = UIImage(named: "star")
+                    }
+                    if rating >= 3 {
+                        ratingStars[2].image = UIImage(named: "star")
+                    }
+                    if rating >= 4 {
+                        ratingStars[3].image = UIImage(named: "star")
+                    }
+                    if rating >= 5 {
+                        ratingStars[4].image = UIImage(named: "star")
+                    }
+                    
                     
                     authorLabel.text = author
+                    authorLabel.textAlignment = .right
                     timeLabel.text = "\(time)"
                     timeLabel.font = UIFont.systemFont(ofSize: 10)
+                    timeLabel.textAlignment = .right
+                    commentLabel.text = comment
+                    commentLabel.font = UIFont.italicSystemFont(ofSize: 14)
+                    commentLabel.numberOfLines = 10
                     
                     reviewsScrollView.addSubview(authorLabel)
                     reviewsScrollView.addSubview(timeLabel)
+                    reviewsScrollView.addSubview(commentLabel)
+                    reviewsScrollView.addSubview(splitLine)
                 }
             }
             
