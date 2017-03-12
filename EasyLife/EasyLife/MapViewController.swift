@@ -39,15 +39,12 @@ class MapViewController: UIViewController {
     // detail information of the location
     var locationDetail: [String: AnyObject]? = nil
     
+    // indicator view
+    var activity = UIActivityIndicatorView()
+    var whiteView = UIView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // initialize the location manager
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
-        
         
         // initialize the location search table and search controller
         let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTableViewController") as! LocationSearchTableViewController
@@ -65,6 +62,7 @@ class MapViewController: UIViewController {
         searchBar.sizeToFit()
         searchBar.placeholder = "Search for places"
         self.navigationItem.titleView = locationSearchController?.searchBar
+        locationSearchController?.searchBar.isUserInteractionEnabled = false
         
         // configure the uisearch controller appearence
         locationSearchController?.hidesNavigationBarDuringPresentation = false
@@ -72,6 +70,28 @@ class MapViewController: UIViewController {
         definesPresentationContext = true
         
         mapView.mapType = .satellite
+        
+        // initialize the indicator view
+        whiteView = UIView(frame: self.view.frame)
+        whiteView.backgroundColor = UIColor.init(white: 1, alpha: 0.5)
+        whiteView.isUserInteractionEnabled = false
+        self.view.addSubview(whiteView)
+        
+        
+        activity = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        activity.center = whiteView.center
+        whiteView.addSubview(activity)
+        activity.startAnimating()
+        
+        
+        
+        
+        // initialize the location manager
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+        
         
         
         // initialize the bottom view
@@ -205,6 +225,9 @@ extension MapViewController : CLLocationManagerDelegate {
     // when location information comes back
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
+            whiteView.removeFromSuperview()
+            locationSearchController?.searchBar.isUserInteractionEnabled = true
+            
             print("location: \(location)")
             currentLocation = location
             let span = MKCoordinateSpanMake(0.05, 0.05)
@@ -225,6 +248,7 @@ extension MapViewController : CLLocationManagerDelegate {
 // protocol used to make the mapView zoom in a new location according the location search results
 extension MapViewController: MapSearchProtocol {
     func dropPinZoomIn(placemark: MKPlacemark){
+       
         // cache the pin
         selectedPin = placemark
         // clear existing pins
