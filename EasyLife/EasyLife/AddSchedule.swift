@@ -7,11 +7,15 @@
 //
 
 import UIKit
-
+import CoreData
 class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate{
-
-    @IBOutlet weak var hours: UILabel!
     
+    
+    @IBOutlet weak var SetRemTime: UIButton!
+    @IBOutlet weak var RemMinute: UILabel!
+    @IBOutlet weak var Remhours: UILabel!
+    @IBOutlet weak var RemMonth: UILabel!
+    @IBOutlet weak var hours: UILabel!
     @IBOutlet weak var UITextLabel: UITextField!
     @IBOutlet weak var UIPickerView: UIView!
     @IBOutlet weak var SetTime: UIButton!
@@ -20,9 +24,15 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
     @IBOutlet weak var YearPickerView: UIPickerView!
     @IBOutlet weak var ScheduleLabel: UILabel!
     
+    @IBOutlet weak var show_hour: UILabel!
+    @IBOutlet weak var show_minute: UILabel!
     @IBOutlet weak var TextField: UITextView!
     var flag = 1
+    var changeflag = 1
     var day : [String] = []
+    var date : [Date] = []
+    var record_date_begin : Date!
+    var record_date_end : Date!
     var hour: [String] = ["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"]
     var minutes: [String] = ["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60"]
     override func viewDidLoad() {
@@ -37,6 +47,8 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
         Month.text = "Today"
         hours.text = "00:"
         Minute.text = "00"
+        show_hour.text = "00:"
+        show_minute.text = "00"
         setTextField()
         creatday()
         let myGesture = UITapGestureRecognizer(target: self, action:#selector(self.tappedAwayFunction(sender:)) )
@@ -119,7 +131,26 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
     @IBAction func GiveupSchedule(_ sender: Any) {
         self.dismiss(animated: true, completion: nil);
     }
+    
+    
     @IBAction func SubmitSchedule(_ sender: Any) {
+        
+        let moc = DataController().managedObjectContext
+        let temp = Task.init(entity: NSEntityDescription.entity(forEntityName: "Task", in:moc)!, insertInto: moc)
+        temp.begin = ""
+        temp.end = ""
+        temp.desc = TextField.text
+        temp.title = UITextLabel.text
+        let begin = "\(createstringfromdate(date: record_date_begin)) \(hours.text! as String)\(Minute.text! as String)"
+        let end = "\(createstringfromdate(date: record_date_end)) \(Remhours.text! as String)\(RemMinute.text! as String)"
+        temp.fin_time = getdatefromstring(string: begin) as NSDate?
+        temp.ram_time = getdatefromstring(string: end) as NSDate?
+        temp.date = getstringfromdate_yy(date: Date())
+        temp.id = Int64(Date().timeIntervalSince1970)
+        print(temp.id)
+        schedule.scheduleInstance.insertDate(schedule: temp)
+        self.dismiss(animated: true, completion: nil);
+ 
         self.dismiss(animated: true, completion: nil);
     }
     
@@ -147,24 +178,63 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
     
     
     
+    @IBAction func setRamtime(_ sender: Any) {
+        changeflag = 2
+        if(flag == 1){
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+                self.view.bringSubview(toFront: self.UIPickerView)
+                self.UIPickerView.center.y = 400
+            }, completion:{finish in
+                
+            })
+        }
+    }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
-        
         if 0 == component
         {
-            
-            Month.text = self.day[row]
-            
+            if(changeflag == 1){
+                Month.text = self.day[row]
+                record_date_begin = self.date[row]}
+            else{
+                self.RemMonth.text = self.day[row]
+                self.record_date_end = self.date[row]
+            }
         }
         else if 1 == component
         {
-           hours.text = "\(self.hour[row]as String): "
+            if(changeflag == 1){
+                hours.text = "\(self.hour[row]as String):"
+             show_hour.text = "\(self.hour[row]as String):" }
+            else{
+                Remhours.text = "\(self.hour[row]as String):"
+                show_hour.text = "\(self.hour[row]as String):"
+            }
+            
         }
         else if 2 == component
         {
-           Minute.text = self.minutes[row]
+            if(changeflag == 1){
+                Minute.text = self.minutes[row]
+             show_minute.text = self.minutes[row]
+            }
+            else{
+                RemMinute.text = self.minutes[row]
+                 show_minute.text = self.minutes[row]
+            }
+            
         }
+
         
+    }
+    
+    @IBAction func Finish(_ sender: Any) {
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            self.UIPickerView.center.y = 1000
+        }, completion: {finish in
+            
+        })
     }
     
     
@@ -172,28 +242,23 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
         return CGFloat(127)
     }
     
+    
     @IBAction func SetTime(_ sender: Any) {
+        changeflag = 1
         if(flag == 1){
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
-                self.UIPickerView.center.y = 500
+                self.view.bringSubview(toFront: self.UIPickerView)
+                self.UIPickerView.center.y = 400
             }, completion:{finish in
-                self.SetTime.titleLabel?.text = "Finish"
+                
             })
-            
-            flag = 2
-        }
-        else{
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
-                self.UIPickerView.center.y = 800
-            }, completion: {finish in
-                self.SetTime.titleLabel?.text = "Set time"
-            })
-            flag = 1
         }
     }
     
     
+    
     func creatday(){
+         date.append(Date())
         day.append("Today")
         for i in 1 ... 90{
             day.append(getstringfromdate(date: getnextdate(day: i)))
@@ -204,6 +269,7 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
     func getnextdate(day : Int)-> Date{
         let calendar = Calendar.current
         let twoDaysAgo = calendar.date(byAdding: .day, value: day , to: Date())
+        date.append(twoDaysAgo!)
         return twoDaysAgo!
     }
     
@@ -218,9 +284,32 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
 
     }
     
+    
+    func getdatefromstring(string: String)->Date{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yy/MM/dd/EEE HH:mm"
+        return formatter.date(from: string)!
+    }
+
    
     
+    func createstringfromdate(date : Date)->String{
+        let dateformatter = DateFormatter()
+        
+        dateformatter.dateFormat = "yy/MM/dd/EEE"
+        
+        let now = dateformatter.string(from: date)
+        return now
+    }
     
+    func getstringfromdate_yy(date: Date) -> String{
+        let dateformatter = DateFormatter()
+        
+        dateformatter.dateFormat = "MM/dd/yy"
+        
+        let now = dateformatter.string(from: date)
+        return now
+    }
     
     
     /*
