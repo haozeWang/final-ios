@@ -7,12 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9B455011E74969000F0C71D /* MyRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B455001E74969000F0C71D /* MyRoute.swift */; };
+		A9B455031E75107F00F0C71D /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B455021E75107F00F0C71D /* PlaceDetailViewController.swift */; };
+		A9B455061E752FE700F0C71D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9B455041E752FE700F0C71D /* Main.storyboard */; };
 		A9CD78A21E73793D0024F2A1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CD78A11E73793D0024F2A1 /* MapViewController.swift */; };
 		A9CD78A41E7379C90024F2A1 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CD78A31E7379C90024F2A1 /* LocationSearchTableViewController.swift */; };
 		A9CD78A61E7379F70024F2A1 /* MapSearchProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CD78A51E7379F70024F2A1 /* MapSearchProtocol.swift */; };
 		A9CD78A81E737A0E0024F2A1 /* ReachAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CD78A71E737A0E0024F2A1 /* ReachAbility.swift */; };
 		A9CD78AA1E737A370024F2A1 /* SharedNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CD78A91E737A370024F2A1 /* SharedNetworking.swift */; };
 		A9CD78AC1E737A5F0024F2A1 /* DecodePolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CD78AB1E737A5F0024F2A1 /* DecodePolyline.m */; };
+		A9CD78AF1E7386470024F2A1 /* DirectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CD78AE1E7386470024F2A1 /* DirectionViewController.swift */; };
+		A9CD78B31E73C0940024F2A1 /* SelectLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CD78B21E73C0940024F2A1 /* SelectLocationViewController.swift */; };
+		A9CD78B51E73E0990024F2A1 /* LocationSearchProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CD78B41E73E0990024F2A1 /* LocationSearchProtocol.swift */; };
 		B13AF9821E70AB90001EB206 /* CalanderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13AF9811E70AB90001EB206 /* CalanderViewController.swift */; };
 		B13AF98C1E70BEE7001EB206 /* CalenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13AF98B1E70BEE7001EB206 /* CalenderCell.swift */; };
 		B19709AB1E728BC6002841BF /* 003.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B19709AA1E728BC6002841BF /* 003.jpg */; };
@@ -20,7 +26,6 @@
 		B19C97B71E71162E000CD117 /* ScheduleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19C97B61E71162E000CD117 /* ScheduleDetail.swift */; };
 		B1B0894E1E6FBF900089ABB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0894D1E6FBF900089ABB0 /* AppDelegate.swift */; };
 		B1B089501E6FBF900089ABB0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0894F1E6FBF900089ABB0 /* ViewController.swift */; };
-		B1B089531E6FBF900089ABB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1B089511E6FBF900089ABB0 /* Main.storyboard */; };
 		B1B089551E6FBF900089ABB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1B089541E6FBF900089ABB0 /* Assets.xcassets */; };
 		B1B089581E6FBF900089ABB0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1B089561E6FBF900089ABB0 /* LaunchScreen.storyboard */; };
 		B1B089631E6FBF900089ABB0 /* EasyLifeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B089621E6FBF900089ABB0 /* EasyLifeTests.swift */; };
@@ -45,6 +50,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A9B455001E74969000F0C71D /* MyRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRoute.swift; sourceTree = "<group>"; };
+		A9B455021E75107F00F0C71D /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
+		A9B455051E752FE700F0C71D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A9CD78A11E73793D0024F2A1 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A9CD78A31E7379C90024F2A1 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
 		A9CD78A51E7379F70024F2A1 /* MapSearchProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSearchProtocol.swift; sourceTree = "<group>"; };
@@ -52,6 +60,9 @@
 		A9CD78A91E737A370024F2A1 /* SharedNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedNetworking.swift; sourceTree = "<group>"; };
 		A9CD78AB1E737A5F0024F2A1 /* DecodePolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecodePolyline.m; sourceTree = "<group>"; };
 		A9CD78AD1E737AB30024F2A1 /* DecodePolyline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DecodePolyline.h; sourceTree = "<group>"; };
+		A9CD78AE1E7386470024F2A1 /* DirectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DirectionViewController.swift; path = ../DirectionViewController.swift; sourceTree = "<group>"; };
+		A9CD78B21E73C0940024F2A1 /* SelectLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLocationViewController.swift; sourceTree = "<group>"; };
+		A9CD78B41E73E0990024F2A1 /* LocationSearchProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchProtocol.swift; sourceTree = "<group>"; };
 		B13AF9811E70AB90001EB206 /* CalanderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalanderViewController.swift; path = ../CalanderViewController.swift; sourceTree = "<group>"; };
 		B13AF98B1E70BEE7001EB206 /* CalenderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderCell.swift; sourceTree = "<group>"; };
 		B19709AA1E728BC6002841BF /* 003.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 003.jpg; sourceTree = "<group>"; };
@@ -61,7 +72,6 @@
 		B1B0894A1E6FBF900089ABB0 /* EasyLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1B0894D1E6FBF900089ABB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1B0894F1E6FBF900089ABB0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B1B089521E6FBF900089ABB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B1B089541E6FBF900089ABB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1B089571E6FBF900089ABB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1B089591E6FBF900089ABB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -117,6 +127,7 @@
 		B1B0894C1E6FBF900089ABB0 /* EasyLife */ = {
 			isa = PBXGroup;
 			children = (
+				A9B455041E752FE700F0C71D /* Main.storyboard */,
 				B19C97B21E70FE25000CD117 /* SharedNetwork.swift */,
 				B19C97B61E71162E000CD117 /* ScheduleDetail.swift */,
 				B19C97B11E70FA9E000CD117 /* EasyLife-Bridging-Header.h */,
@@ -129,7 +140,6 @@
 				B1E8666E1E736A1100ED5F09 /* 3.jpg */,
 				B1E8666F1E736A1100ED5F09 /* 4.jpg */,
 				B1E8666B1E736A0900ED5F09 /* 1.jpg */,
-				B1B089511E6FBF900089ABB0 /* Main.storyboard */,
 				B1E866691E73517700ED5F09 /* weatherforecastTableViewCell.swift */,
 				B1E866671E73213000ED5F09 /* weatherforecastcell.swift */,
 				B1E866651E731E8900ED5F09 /* weatherforecast.swift */,
@@ -144,6 +154,11 @@
 				A9CD78A91E737A370024F2A1 /* SharedNetworking.swift */,
 				A9CD78AB1E737A5F0024F2A1 /* DecodePolyline.m */,
 				A9CD78AD1E737AB30024F2A1 /* DecodePolyline.h */,
+				A9CD78AE1E7386470024F2A1 /* DirectionViewController.swift */,
+				A9B455001E74969000F0C71D /* MyRoute.swift */,
+				A9CD78B21E73C0940024F2A1 /* SelectLocationViewController.swift */,
+				A9CD78B41E73E0990024F2A1 /* LocationSearchProtocol.swift */,
+				A9B455021E75107F00F0C71D /* PlaceDetailViewController.swift */,
 			);
 			path = EasyLife;
 			sourceTree = "<group>";
@@ -246,8 +261,8 @@
 				B1B089581E6FBF900089ABB0 /* LaunchScreen.storyboard in Resources */,
 				B1B089551E6FBF900089ABB0 /* Assets.xcassets in Resources */,
 				B19709AB1E728BC6002841BF /* 003.jpg in Resources */,
-				B1B089531E6FBF900089ABB0 /* Main.storyboard in Resources */,
 				B1E866711E736A1100ED5F09 /* 3.jpg in Resources */,
+				A9B455061E752FE700F0C71D /* Main.storyboard in Resources */,
 				B1E8666C1E736A0900ED5F09 /* 1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,17 +282,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9CD78A21E73793D0024F2A1 /* MapViewController.swift in Sources */,
+				A9B455011E74969000F0C71D /* MyRoute.swift in Sources */,
 				B13AF9821E70AB90001EB206 /* CalanderViewController.swift in Sources */,
 				B1E866681E73213000ED5F09 /* weatherforecastcell.swift in Sources */,
 				B1B089501E6FBF900089ABB0 /* ViewController.swift in Sources */,
 				A9CD78AA1E737A370024F2A1 /* SharedNetworking.swift in Sources */,
+				A9CD78B31E73C0940024F2A1 /* SelectLocationViewController.swift in Sources */,
 				A9CD78A41E7379C90024F2A1 /* LocationSearchTableViewController.swift in Sources */,
 				B13AF98C1E70BEE7001EB206 /* CalenderCell.swift in Sources */,
+				A9B455031E75107F00F0C71D /* PlaceDetailViewController.swift in Sources */,
 				A9CD78A61E7379F70024F2A1 /* MapSearchProtocol.swift in Sources */,
 				B19C97B31E70FE25000CD117 /* SharedNetwork.swift in Sources */,
 				B1E8666A1E73517700ED5F09 /* weatherforecastTableViewCell.swift in Sources */,
 				B19C97B71E71162E000CD117 /* ScheduleDetail.swift in Sources */,
 				A9CD78AC1E737A5F0024F2A1 /* DecodePolyline.m in Sources */,
+				A9CD78AF1E7386470024F2A1 /* DirectionViewController.swift in Sources */,
+				A9CD78B51E73E0990024F2A1 /* LocationSearchProtocol.swift in Sources */,
 				A9CD78A81E737A0E0024F2A1 /* ReachAbility.swift in Sources */,
 				B1EEA1641E6FF907001116A6 /* Weather.swift in Sources */,
 				B1B0894E1E6FBF900089ABB0 /* AppDelegate.swift in Sources */,
@@ -304,10 +324,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B1B089511E6FBF900089ABB0 /* Main.storyboard */ = {
+		A9B455041E752FE700F0C71D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B1B089521E6FBF900089ABB0 /* Base */,
+				A9B455051E752FE700F0C71D /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

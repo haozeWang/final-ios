@@ -26,16 +26,15 @@ class MapViewController: UIViewController {
     // current location
     var currentLocation: CLLocation? = nil
     
+    // show a summary information of the selected location at the bottom of the view controller
+    // tapping the view will open a detail view controller showing more details about the view controller
+    var bottomView: UIView? = nil
+    var bottomLocationNameLabel: UILabel? = nil
+    var bottomLocationSubtitleLabel: UILabel? = nil
+    var bottomImageView: UIImageView? = nil
     
-    /*
-     let regionRadius: CLLocationDistance = 1000
-     func centerMapOnLocation(location: CLLocation) {
-     let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
-     regionRadius * 2.0, regionRadius * 2.0)
-     mapView.setRegion(coordinateRegion, animated: true)
-     }
-     */
-    
+    // detail information of the location
+    var locationDetail: [String: AnyObject]? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,11 +67,125 @@ class MapViewController: UIViewController {
         locationSearchController?.hidesNavigationBarDuringPresentation = false
         locationSearchController?.dimsBackgroundDuringPresentation = true
         definesPresentationContext = true
+        
+        mapView.mapType = .satellite
+        
+        
+        // initialize the bottom view
+        initBottomView()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    // initialize the bottom view
+    func initBottomView() {
+        // bottom view
+        bottomView = UIView(frame: CGRect(x: 0, y: 548, width: 375, height: 80))
+        bottomView?.backgroundColor = UIColor(red: 65/255, green: 105/255, blue: 225/255, alpha: 0.9)
+        bottomView?.layer.cornerRadius = 10.0
+        
+        // location name label
+        bottomLocationNameLabel = UILabel(frame: CGRect(x: 10, y: 5, width: 300, height: 30))
+        bottomLocationNameLabel?.backgroundColor = UIColor.clear
+        bottomLocationNameLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        bottomLocationNameLabel?.textColor = UIColor.white
+        bottomLocationNameLabel?.text = "name"
+        
+        // location subtitle label
+        bottomLocationSubtitleLabel = UILabel(frame: CGRect(x: 10, y: 35, width: 300, height: 30))
+        bottomLocationSubtitleLabel?.backgroundColor = UIColor.clear
+        bottomLocationSubtitleLabel?.font = UIFont.systemFont(ofSize: 14)
+        bottomLocationSubtitleLabel?.textColor = UIColor.orange
+        bottomLocationSubtitleLabel?.text = "subtitle"
+        
+        // image view
+        bottomImageView = UIImageView(frame: CGRect(x: 305, y: 10, width: 50, height: 50))
+        
+        bottomView?.addSubview(bottomLocationNameLabel!)
+        bottomView?.addSubview(bottomLocationSubtitleLabel!)
+        bottomView?.addSubview(bottomImageView!)
+        
+        
+        // add gesture
+        let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.showPlaceDetail(_:)))
+        bottomView?.addGestureRecognizer(gesture)
+        
+        self.view.addSubview(bottomView!)
+        bottomView?.isHidden = true
+    }
+    
+    // show place details
+    func showPlaceDetail(_ sender:UITapGestureRecognizer){
+        // do other task
+        performSegue(withIdentifier: "showPlaceDetail", sender: self)
+    }
+    
+    // show place details
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showPlaceDetail" {
+            let vc = segue.destination as! PlaceDetailViewController
+            vc.locationDetail = self.locationDetail
+            vc.iconImage = self.bottomImageView?.image
+        }
+    }
+    
+    
+    
+    
+    // get detail information of the selected location
+    func getPlaceDetailResults() {
+        let latitude = self.parseOptionalValue(degree: "\(self.selectedPin?.coordinate.latitude)")
+        let longitute = self.parseOptionalValue(degree: "\(self.selectedPin?.coordinate.longitude)")
+        var name = self.parseOptionalValue(degree: "\(self.selectedPin?.name)")
+        name = name.replacingOccurrences(of: "\"", with: "")
+        name = name.replacingOccurrences(of: " ", with: "+")
+        SharedNetworking.networkInstance.googlePlaceSearchResults(latitute: latitude, longitute: longitute, name: name) { (result, success) -> Void in
+            if success == true {
+                DispatchQueue.main.async {
+                    self.bottomView?.isHidden = false
+                    self.locationDetail = result
+                    guard let name = result["name"] as? String,
+                        let address = result["formatted_address"] as? String else  { return}
+                    self.bottomLocationNameLabel?.text = name
+                    self.bottomLocationSubtitleLabel?.text = address
+                    
+                    // icon
+                    guard let iconUrl = result["icon"] as? String else {   return}
+                    
+                    SharedNetworking.networkInstance.downloadImage(urlString: iconUrl){
+                        (imageData, success) -> Void in
+                        print(1)
+                        if success {
+                            print(2)
+                            DispatchQueue.main.async {
+                                let iconImage = UIImage(data: imageData as Data)
+                                self.bottomImageView!.image = iconImage
+                            }
+                        }
+                    }
+                }
+            }
+            else{
+                print("false")
+                DispatchQueue.main.async {
+                    self.bottomView?.isHidden = true
+                }
+            }
+            
+            
+        }
+        
+    }
+    
+    // convert the coordinate degree into string
+    func parseOptionalValue(degree: String) -> String {
+        var result = degree
+        print("degree:\(degree)")
+        let start = result.index(result.startIndex, offsetBy: 9)
+        let end = result.index(result.endIndex, offsetBy: -1)
+        let range = start..<end
+        result = result.substring(with: range)
+        print(result)
+        return result
     }
     
 }
@@ -115,6 +228,7 @@ extension MapViewController: MapSearchProtocol {
         // clear existing pins
         mapView.removeAnnotations(mapView.annotations)
         
+        // update the map
         let annotation = MKPointAnnotation()
         annotation.coordinate = placemark.coordinate
         annotation.title = placemark.name
@@ -126,11 +240,15 @@ extension MapViewController: MapSearchProtocol {
         let span = MKCoordinateSpanMake(0.05, 0.05)
         let region = MKCoordinateRegionMake(placemark.coordinate, span)
         mapView.setRegion(region, animated: true)
+        
+        
+        // get detail information from yelp
+        self.getPlaceDetailResults()
     }
 }
 
 
-// customize the pinView
+// customize the mapview
 extension MapViewController : MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
@@ -145,7 +263,7 @@ extension MapViewController : MKMapViewDelegate {
         let smallSquare = CGSize(width: 30, height: 30)
         let button = UIButton(frame: CGRect(origin: CGPoint.zero, size: smallSquare))
         button.setBackgroundImage(UIImage(named: "go"), for: .normal)
-        button.addTarget(self, action: #selector(self.testDirection), for: .touchUpInside)
+        button.addTarget(self, action: #selector(self.showDirectionView), for: .touchUpInside)
         pinView?.leftCalloutAccessoryView = button
         return pinView
     }
@@ -159,118 +277,14 @@ extension MapViewController : MKMapViewDelegate {
     
     
     func showDirectionView() {
-        performSegue(withIdentifier: "showDirections", sender: self)
+        let vc = storyboard?.instantiateViewController(withIdentifier: "DirectionViewController") as! DirectionViewController
+        vc.sourceCoordinate = self.currentLocation?.coordinate
+        vc.destCoordinate = self.selectedPin?.coordinate
+        vc.searchRegion = mapView.region
+        present(vc, animated: true, completion: nil)
+        vc.sourceLabel.text = "My Location"
+        vc.destLabel.text = selectedPin?.name
     }
-    
-    
-    
-    
-    
-    func testDirection() {
-        var googleMapUrl = "https://maps.googleapis.com/maps/api/directions/json?"
-        let key = "AIzaSyBuh-vmZk4PPOCO1c6ELDcxkntiLWHy4tE"
-        
-        print("+++++++")
-        // source location
-        let currentLatitude = self.coordinateDegreeString(degree: "\(self.currentLocation?.coordinate.latitude)")
-        let currentLongitude = self.coordinateDegreeString(degree: "\(self.currentLocation?.coordinate.longitude)")
-        
-        googleMapUrl += "origin=\(currentLatitude),\(currentLongitude)"
-        
-        // destination
-        let destLatitude = self.coordinateDegreeString(degree: "\(self.selectedPin?.coordinate.latitude)")
-        let destLongitude = self.coordinateDegreeString(degree: "\(self.selectedPin?.coordinate.longitude)")
-        googleMapUrl += "&destination=\(destLatitude),\(destLongitude)"
-        
-        googleMapUrl += "&key=\(key)"
-        
-        print(googleMapUrl)
-        
-        
-        SharedNetworking.networkInstance.googleMapDirectionResults(url: googleMapUrl) {
-            (routes, success) -> Void in
-            print("-------------")
-            if routes.count>0 {
-                if let route = routes[0] as? [String: AnyObject] {
-                    if let overview_polyline = route["overview_polyline"] as? [String: AnyObject] {
-                        if let encodedPolyline = overview_polyline["points"] as? String {
-                            
-                            let polyline = DecodePolyline.polyline(withEncodedString: encodedPolyline)
-                            
-                            DispatchQueue.main.async {
-                                self.mapView.add(polyline!)
-                                // set the new map rect
-                                let newMapSize = MKMapSize(width: polyline!.boundingMapRect.size.width*1.5,
-                                                           height: polyline!.boundingMapRect.size.height*1.5)
-                                let newMapOriginX = polyline!.boundingMapRect.origin.x
-                                    + polyline!.boundingMapRect.size.width/2
-                                    - newMapSize.width/2
-                                let newMapOriginY = polyline!.boundingMapRect.origin.y
-                                    + polyline!.boundingMapRect.size.height/2
-                                    - newMapSize.height/2
-                                let newMapOrigin = MKMapPoint(x: newMapOriginX, y: newMapOriginY)
-                                let newMapRect = MKMapRect(origin: newMapOrigin, size: newMapSize)
-                                self.mapView.setVisibleMapRect(newMapRect, animated: true)
-                            }
-                            
-                        }
-                    }
-                }
-                
-            }
-        }
-        
-        
-    }
-    
-    // convert the coordinate degree into string
-    func coordinateDegreeString(degree: String) -> String {
-        var result = degree
-        print("degree:\(degree)")
-        let start = result.index(result.startIndex, offsetBy: 9)
-        let end = result.index(result.endIndex, offsetBy: -1)
-        let range = start..<end
-        print(result)
-        result = result.substring(with: range)
-        return result
-    }
-    
-    
-    func getDirections(){
-        guard let currentLocation = self.currentLocation,
-            let selectedPin = self.selectedPin else{
-                return
-        }
-        print("----------------------")
-        let request = MKDirectionsRequest()
-        request.source = MKMapItem(placemark: MKPlacemark(coordinate: currentLocation.coordinate, addressDictionary: nil))
-        request.destination = MKMapItem(placemark: selectedPin)
-        request.requestsAlternateRoutes = true
-        request.transportType = .any
-        
-        
-        let directions = MKDirections(request: request)
-        
-        directions.calculate { [unowned self] response, error in
-            guard let unwrappedResponse = response else { return }
-            
-            
-            
-            for route in unwrappedResponse.routes {
-                print(route.advisoryNotices)
-                print(route.distance)
-                print(route.name)
-                print(route.steps)
-                print(route.transportType)
-                print(route.expectedTravelTime)
-                print("-------+++++++++++++")
-                self.mapView.add(route.polyline)
-                self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
-            }
-        }
-        
-    }
-    
     
 }
 
