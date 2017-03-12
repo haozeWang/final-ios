@@ -153,7 +153,6 @@ class MapViewController: UIViewController {
                     
                     SharedNetworking.networkInstance.downloadImage(urlString: iconUrl){
                         (imageData, success) -> Void in
-                        print(1)
                         if success {
                             print(2)
                             DispatchQueue.main.async {
