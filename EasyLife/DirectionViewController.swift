@@ -22,13 +22,18 @@ class DirectionViewController: UIViewController, UITabBarDelegate{
     
     @IBOutlet weak var tabBar: UITabBar!
     
-
     
     // tab bar buttons to choose the travel vehicle
     @IBOutlet weak var driveButton: UITabBarItem!
     @IBOutlet weak var transitButton: UITabBarItem!
     @IBOutlet weak var walkButton: UITabBarItem!
     @IBOutlet weak var cycleButton: UITabBarItem!
+    
+    
+    // protocol to set location for the schedule
+    var scheduleSetLocationProtocolDelegate: ScheduleSetLocationProtocol? = nil
+    
+    
     
     // coordinates of source and destination
     var sourceCoordinate: CLLocationCoordinate2D? = nil
@@ -48,6 +53,7 @@ class DirectionViewController: UIViewController, UITabBarDelegate{
     
     // record the time and distance information of routes of the current travel mode
     var myRoutes = [MyRoute]()
+    
     
     // This scrollView is used to show some detailed information of the current route
     var scrollView: UIScrollView? = nil
@@ -276,9 +282,10 @@ class DirectionViewController: UIViewController, UITabBarDelegate{
             
             
             // add a confirm button on each page of the scrollView
+            // - Attribution: http://stackoverflow.com/questions/35550966/swift-add-show-action-to-button-programmatically
             let confirmButton = UIButton(frame: CGRect(x: 300 + 375 * i, y: 15, width: 50, height: 50))
             confirmButton.setBackgroundImage(UIImage(named: "confirm"), for: .normal)
-            
+            confirmButton.addTarget(self, action: #selector(self.sendDataToSchedule), for: UIControlEvents.touchUpInside)
             
             DispatchQueue.main.async {
                 self.scrollView?.addSubview(timeLabel)
@@ -303,6 +310,31 @@ class DirectionViewController: UIViewController, UITabBarDelegate{
         return result
     }
     
+    
+    // send data back to schedule view
+    func sendDataToSchedule() {
+        // source location
+        let sourceLatitude = self.coordinateDegreeString(degree: "\(sourceCoordinate?.latitude)")
+        let sourceLongitude = self.coordinateDegreeString(degree: "\(sourceCoordinate?.longitude)")
+        
+        // destination
+        let destLatitude = self.coordinateDegreeString(degree: "\(destCoordinate?.latitude)")
+        let destLongitude = self.coordinateDegreeString(degree: "\(destCoordinate?.longitude)")
+        
+        if scheduleSetLocationProtocolDelegate != nil {
+            scheduleSetLocationProtocolDelegate!.updateLocation(sourceLat: sourceLatitude,
+                                                                sourceLon: sourceLongitude,
+                                                                destLat: destLatitude,
+                                                                destLon: destLongitude,
+                                                                sourceName: self.sourceLabel.text!,
+                                                                destName: self.destLabel.text!,
+                                                                expectedTime: selectedRoute.time)
+            let presentingViewController = self.presentingViewController
+            self.dismiss(animated: true) {
+                presentingViewController?.dismiss(animated: false, completion: nil)
+            }
+        }
+    }
 }
 
 

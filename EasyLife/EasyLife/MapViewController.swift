@@ -20,6 +20,9 @@ class MapViewController: UIViewController {
     // search controller
     var locationSearchController: UISearchController? = nil
     
+    // protocol to set location for a schedule
+    var scheduleSetLocationProtocolDelegate: ScheduleSetLocationProtocol? = nil
+    
     // selected destination location
     var selectedPin: MKPlacemark? = nil
     
@@ -277,6 +280,7 @@ extension MapViewController : MKMapViewDelegate {
     
     func showDirectionView() {
         let vc = storyboard?.instantiateViewController(withIdentifier: "DirectionViewController") as! DirectionViewController
+        vc.scheduleSetLocationProtocolDelegate = self.scheduleSetLocationProtocolDelegate
         vc.sourceCoordinate = self.currentLocation?.coordinate
         vc.destCoordinate = self.selectedPin?.coordinate
         vc.searchRegion = mapView.region

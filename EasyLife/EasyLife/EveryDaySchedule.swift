@@ -47,7 +47,9 @@ class EveryDaySchedule: UITableViewController,UIActionSheetDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Daytablecell", for: indexPath) as! EveryDayScheduleCell
         let issue = task[indexPath.row]
         cell.title.text = issue.title
-        cell.fin_time.text = createstringfromdate(date: issue.fin_time as! Date)
+        if let time = issue.fin_time{
+            cell.fin_time.text = createstringfromdate(date: time as Date)
+        }
         return cell
     }
     

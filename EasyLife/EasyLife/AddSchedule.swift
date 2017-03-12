@@ -27,6 +27,18 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
     @IBOutlet weak var show_hour: UILabel!
     @IBOutlet weak var show_minute: UILabel!
     @IBOutlet weak var TextField: UITextView!
+    
+    // information about source and destination
+    var sourceLatitude = "0.0"
+    var sourceLongitude = "0.0"
+    var destLatitude = "0.0"
+    var destLongitude = "0.0"
+    var sourceName = "source"
+    var destName = "destination"
+    var expectedTime = 0
+    
+    
+    
     var flag = 1
     var changeflag = 1
     var day : [String] = []
@@ -127,10 +139,12 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
     }
 
     
-    
     @IBAction func GiveupSchedule(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil);
+        self.dismiss(animated: true, completion: nil)
     }
+
+    
+
     
     
     @IBAction func SubmitSchedule(_ sender: Any) {
@@ -314,6 +328,17 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
     
     
     
+    @IBAction func setLocation(_ sender: Any) {
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "mapNavigationVC") as! UINavigationController
+        let vc = navigationVC.viewControllers.first as! MapViewController
+        vc.scheduleSetLocationProtocolDelegate = self
+        present(navigationVC, animated: true, completion: nil)
+    }
+    
+    
+    
+    
+    
     /*
     // MARK: - Navigation
 
@@ -324,4 +349,21 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
     }
     */
 
+}
+
+
+
+extension AddSchedule: ScheduleSetLocationProtocol {
+    func updateLocation(sourceLat: String, sourceLon: String, destLat: String, destLon: String, sourceName: String, destName: String, expectedTime: Int) {
+        self.sourceLatitude = sourceLat
+        self.sourceLongitude = sourceLon
+        self.destLatitude = destLat
+        self.destLongitude = destLon
+        self.sourceName = sourceName
+        self.destName = destName
+        self.expectedTime = expectedTime
+        
+        print(self.destName)
+        print(self.expectedTime)
+    }
 }
