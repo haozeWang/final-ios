@@ -85,7 +85,6 @@ class ScheduleDetail: UIViewController {
     }
     
     func loadfurdata(date: NSDate){
-        var hasinfor = false;
         var time = Int(date.timeIntervalSince1970)
         time = time - 21800
         print(time)
@@ -102,22 +101,29 @@ class ScheduleDetail: UIViewController {
                                 let wea = i["weather"] as! [AnyObject]
                                 let weather_clear = wea[0] as AnyObject
                                 let weather_date = weather_clear["description"] as! String
-                                if weather_date == "snow" || weather_date == "rain" || weather_date == "thunderstorm" || weather_date == "shower rain" {
-                                    print("this is v f")
-                                    self.information.text = "has rain,be careful"
+                                if weather_date == "snow"{
+                                self.information.text = "During your trip phase，would be snowing. Be careful"
+                                return
+
+                                }
+                                else if weather_date == "rain" {
+                                self.information.text = "During your trip phase，would be raining. Be careful"
+                                return
+                                }
+                                else if weather_date == "thunderstorm"{
+                                self.information.text = "During your trip phase，would have thunderstorm. Be careful"
                                     return
                                 }
-                                else{
-                                    hasinfor = true
+                                else if weather_date == "shower rain" {
+                                self.information.text = "During your trip phase，would have shower rain. Be careful"
+                                return
                                 }
-                                
                             }
                             else {
-                                print("this is v efeefewafef")
-                                self.information.text = "No rain"
+                                self.information.text = "Nice weather. Enjoying your trip"
                             }
                         }
-                        self.information.text = "No RAIN"
+                        self.information.text = "Nice weather. Enjoying your trip"
 
                     }
             }

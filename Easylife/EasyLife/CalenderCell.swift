@@ -11,4 +11,5 @@ import UIKit
 class CalenderCell: UICollectionViewCell {
     
     @IBOutlet weak var timerLabel: UILabel!
+    
 }

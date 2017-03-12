@@ -65,7 +65,9 @@ class weatherforecast: UIViewController,UICollectionViewDataSource,UICollectionV
     override func viewDidLoad() {
         super.viewDidLoad()
         let date = NSDate()
-        var time = Int(date.timeIntervalSince1970)
+        self.UICollectionView.backgroundColor = UIColor.clear
+        self.UItableView.separatorStyle = .none
+        let  time = Int(date.timeIntervalSince1970)
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         let num = time % 4
         if(num == 0){
@@ -135,7 +137,7 @@ class weatherforecast: UIViewController,UICollectionViewDataSource,UICollectionV
             let country = sys["country"] as! String
             let city = responsedate["name"] as! String
             self.curr_weather = Weather(city: city, country: country, weather: weather_date, temperature: temperature, image: code)
-            self.curr_temp.text = "\(temperature - 273)"
+            self.curr_temp.text = "\(temperature - 273)℃"
             self.wea_inf.text = weather_date
             self.cityname.text = city
     
@@ -160,9 +162,7 @@ class weatherforecast: UIViewController,UICollectionViewDataSource,UICollectionV
         print(weather_day.count)
     }
 
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.backgroundColor = .clear
-    }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! weatherforecastcell
@@ -170,7 +170,7 @@ class weatherforecast: UIViewController,UICollectionViewDataSource,UICollectionV
         let datacell = self.weatherdata[indexPath.row]
         cell.UItempLabel.text = "\(datacell.temperature - 273)℃"
         cell.UIdateLabel.text = datacell.time
-        cell.UIimageView.image = self.getimage(url: "http://openweathermap.org/img/w/\(datacell.image as! String).png")
+        cell.UIimageView.image = self.getimage(url: "http://openweathermap.org/img/w/\(datacell.image as String).png")
         return cell
     }
     
@@ -182,10 +182,12 @@ class weatherforecast: UIViewController,UICollectionViewDataSource,UICollectionV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.UItableView.dequeueReusableCell(withIdentifier: "tablecell", for: indexPath) as!weatherforecastTableViewCell
         let Issue = weather_day[indexPath.row]
+        cell.backgroundColor = UIColor.clear
+        cell.contentView.backgroundColor = UIColor.clear
         let temp =  NSDate(timeIntervalSince1970: Double(Issue.dt))
         cell.UIdatelabel.text = temp.dayOfTheWeek()! as String
         cell.UItemp.text = "\(Issue.temperature - 273)℃"
-        cell.UIweather.image = self.getimage(url: "http://openweathermap.org/img/w/\(Issue.image as! String).png")
+        cell.UIweather.image = self.getimage(url: "http://openweathermap.org/img/w/\(Issue.image as String).png")
         return cell
     }
     

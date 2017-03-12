@@ -16,9 +16,20 @@
 		A9CD78A81E737A0E0024F2A1 /* ReachAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CD78A71E737A0E0024F2A1 /* ReachAbility.swift */; };
 		A9CD78AA1E737A370024F2A1 /* SharedNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CD78A91E737A370024F2A1 /* SharedNetworking.swift */; };
 		A9CD78AC1E737A5F0024F2A1 /* DecodePolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CD78AB1E737A5F0024F2A1 /* DecodePolyline.m */; };
+<<<<<<< HEAD
 		A9CD78AF1E7386470024F2A1 /* DirectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CD78AE1E7386470024F2A1 /* DirectionViewController.swift */; };
 		A9CD78B31E73C0940024F2A1 /* SelectLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CD78B21E73C0940024F2A1 /* SelectLocationViewController.swift */; };
 		A9CD78B51E73E0990024F2A1 /* LocationSearchProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CD78B41E73E0990024F2A1 /* LocationSearchProtocol.swift */; };
+=======
+		B116CD3F1E74A2D900508FEC /* EveryDaySchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B116CD3E1E74A2D900508FEC /* EveryDaySchedule.swift */; };
+		B116CD411E74AC9700508FEC /* AddTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B116CD401E74AC9700508FEC /* AddTask.swift */; };
+		B116CD5F1E74E8C900508FEC /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B116CD5D1E74E8C900508FEC /* DataModel.xcdatamodeld */; };
+		B116CD691E74EA1F00508FEC /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B116CD681E74EA1F00508FEC /* DataController.swift */; };
+		B116CD6D1E74EE2E00508FEC /* schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B116CD6C1E74EE2E00508FEC /* schedule.swift */; };
+		B116CD741E75061800508FEC /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B116CD721E75061800508FEC /* Task+CoreDataClass.swift */; };
+		B116CD751E75061800508FEC /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B116CD731E75061800508FEC /* Task+CoreDataProperties.swift */; };
+		B116CD771E7509B300508FEC /* EveryDayScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B116CD761E7509B300508FEC /* EveryDayScheduleCell.swift */; };
+>>>>>>> db1909a1053cdea756a5815c083b89559ab5bc7b
 		B13AF9821E70AB90001EB206 /* CalanderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13AF9811E70AB90001EB206 /* CalanderViewController.swift */; };
 		B13AF98C1E70BEE7001EB206 /* CalenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13AF98B1E70BEE7001EB206 /* CalenderCell.swift */; };
 		B19709AB1E728BC6002841BF /* 003.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B19709AA1E728BC6002841BF /* 003.jpg */; };
@@ -36,6 +47,7 @@
 		B1E866701E736A1100ED5F09 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B1E8666D1E736A1100ED5F09 /* 2.jpg */; };
 		B1E866711E736A1100ED5F09 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B1E8666E1E736A1100ED5F09 /* 3.jpg */; };
 		B1E866721E736A1100ED5F09 /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B1E8666F1E736A1100ED5F09 /* 4.jpg */; };
+		B1E866741E73A53100ED5F09 /* AddSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E866731E73A53100ED5F09 /* AddSchedule.swift */; };
 		B1EEA1641E6FF907001116A6 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EEA1631E6FF907001116A6 /* Weather.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,9 +72,20 @@
 		A9CD78A91E737A370024F2A1 /* SharedNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedNetworking.swift; sourceTree = "<group>"; };
 		A9CD78AB1E737A5F0024F2A1 /* DecodePolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecodePolyline.m; sourceTree = "<group>"; };
 		A9CD78AD1E737AB30024F2A1 /* DecodePolyline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DecodePolyline.h; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		A9CD78AE1E7386470024F2A1 /* DirectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DirectionViewController.swift; path = ../DirectionViewController.swift; sourceTree = "<group>"; };
 		A9CD78B21E73C0940024F2A1 /* SelectLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLocationViewController.swift; sourceTree = "<group>"; };
 		A9CD78B41E73E0990024F2A1 /* LocationSearchProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchProtocol.swift; sourceTree = "<group>"; };
+=======
+		B116CD3E1E74A2D900508FEC /* EveryDaySchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EveryDaySchedule.swift; sourceTree = "<group>"; };
+		B116CD401E74AC9700508FEC /* AddTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTask.swift; sourceTree = "<group>"; };
+		B116CD5E1E74E8C900508FEC /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		B116CD681E74EA1F00508FEC /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		B116CD6C1E74EE2E00508FEC /* schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = schedule.swift; sourceTree = "<group>"; };
+		B116CD721E75061800508FEC /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B116CD731E75061800508FEC /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B116CD761E7509B300508FEC /* EveryDayScheduleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EveryDayScheduleCell.swift; sourceTree = "<group>"; };
+>>>>>>> db1909a1053cdea756a5815c083b89559ab5bc7b
 		B13AF9811E70AB90001EB206 /* CalanderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalanderViewController.swift; path = ../CalanderViewController.swift; sourceTree = "<group>"; };
 		B13AF98B1E70BEE7001EB206 /* CalenderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderCell.swift; sourceTree = "<group>"; };
 		B19709AA1E728BC6002841BF /* 003.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 003.jpg; sourceTree = "<group>"; };
@@ -85,6 +108,7 @@
 		B1E8666D1E736A1100ED5F09 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		B1E8666E1E736A1100ED5F09 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
 		B1E8666F1E736A1100ED5F09 /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
+		B1E866731E73A53100ED5F09 /* AddSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSchedule.swift; sourceTree = "<group>"; };
 		B1EEA1631E6FF907001116A6 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +133,8 @@
 		B1B089411E6FBF900089ABB0 = {
 			isa = PBXGroup;
 			children = (
+				B116CD721E75061800508FEC /* Task+CoreDataClass.swift */,
+				B116CD731E75061800508FEC /* Task+CoreDataProperties.swift */,
 				B1B0894C1E6FBF900089ABB0 /* EasyLife */,
 				B1B089611E6FBF900089ABB0 /* EasyLifeTests */,
 				B1B0894B1E6FBF900089ABB0 /* Products */,
@@ -132,6 +158,7 @@
 				B19C97B61E71162E000CD117 /* ScheduleDetail.swift */,
 				B19C97B11E70FA9E000CD117 /* EasyLife-Bridging-Header.h */,
 				B13AF98B1E70BEE7001EB206 /* CalenderCell.swift */,
+				B116CD681E74EA1F00508FEC /* DataController.swift */,
 				B1B0894D1E6FBF900089ABB0 /* AppDelegate.swift */,
 				B13AF9811E70AB90001EB206 /* CalanderViewController.swift */,
 				B19709AA1E728BC6002841BF /* 003.jpg */,
@@ -140,6 +167,16 @@
 				B1E8666E1E736A1100ED5F09 /* 3.jpg */,
 				B1E8666F1E736A1100ED5F09 /* 4.jpg */,
 				B1E8666B1E736A0900ED5F09 /* 1.jpg */,
+<<<<<<< HEAD
+=======
+				B1B089511E6FBF900089ABB0 /* Main.storyboard */,
+				B116CD761E7509B300508FEC /* EveryDayScheduleCell.swift */,
+				B116CD6C1E74EE2E00508FEC /* schedule.swift */,
+				B116CD5D1E74E8C900508FEC /* DataModel.xcdatamodeld */,
+				B116CD401E74AC9700508FEC /* AddTask.swift */,
+				B1E866731E73A53100ED5F09 /* AddSchedule.swift */,
+				B116CD3E1E74A2D900508FEC /* EveryDaySchedule.swift */,
+>>>>>>> db1909a1053cdea756a5815c083b89559ab5bc7b
 				B1E866691E73517700ED5F09 /* weatherforecastTableViewCell.swift */,
 				B1E866671E73213000ED5F09 /* weatherforecastcell.swift */,
 				B1E866651E731E8900ED5F09 /* weatherforecast.swift */,
@@ -216,6 +253,9 @@
 		B1B089421E6FBF900089ABB0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Haoze Wang";
@@ -282,7 +322,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9CD78A21E73793D0024F2A1 /* MapViewController.swift in Sources */,
+<<<<<<< HEAD
 				A9B455011E74969000F0C71D /* MyRoute.swift in Sources */,
+=======
+				B116CD771E7509B300508FEC /* EveryDayScheduleCell.swift in Sources */,
+				B116CD5F1E74E8C900508FEC /* DataModel.xcdatamodeld in Sources */,
+				B1E866741E73A53100ED5F09 /* AddSchedule.swift in Sources */,
+>>>>>>> db1909a1053cdea756a5815c083b89559ab5bc7b
 				B13AF9821E70AB90001EB206 /* CalanderViewController.swift in Sources */,
 				B1E866681E73213000ED5F09 /* weatherforecastcell.swift in Sources */,
 				B1B089501E6FBF900089ABB0 /* ViewController.swift in Sources */,
@@ -293,14 +339,23 @@
 				A9B455031E75107F00F0C71D /* PlaceDetailViewController.swift in Sources */,
 				A9CD78A61E7379F70024F2A1 /* MapSearchProtocol.swift in Sources */,
 				B19C97B31E70FE25000CD117 /* SharedNetwork.swift in Sources */,
+				B116CD741E75061800508FEC /* Task+CoreDataClass.swift in Sources */,
 				B1E8666A1E73517700ED5F09 /* weatherforecastTableViewCell.swift in Sources */,
 				B19C97B71E71162E000CD117 /* ScheduleDetail.swift in Sources */,
+				B116CD6D1E74EE2E00508FEC /* schedule.swift in Sources */,
 				A9CD78AC1E737A5F0024F2A1 /* DecodePolyline.m in Sources */,
+<<<<<<< HEAD
 				A9CD78AF1E7386470024F2A1 /* DirectionViewController.swift in Sources */,
 				A9CD78B51E73E0990024F2A1 /* LocationSearchProtocol.swift in Sources */,
+=======
+				B116CD411E74AC9700508FEC /* AddTask.swift in Sources */,
+>>>>>>> db1909a1053cdea756a5815c083b89559ab5bc7b
 				A9CD78A81E737A0E0024F2A1 /* ReachAbility.swift in Sources */,
 				B1EEA1641E6FF907001116A6 /* Weather.swift in Sources */,
+				B116CD3F1E74A2D900508FEC /* EveryDaySchedule.swift in Sources */,
+				B116CD691E74EA1F00508FEC /* DataController.swift in Sources */,
 				B1B0894E1E6FBF900089ABB0 /* AppDelegate.swift in Sources */,
+				B116CD751E75061800508FEC /* Task+CoreDataProperties.swift in Sources */,
 				B1E866661E731E8900ED5F09 /* weatherforecast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,6 +576,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B116CD5D1E74E8C900508FEC /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B116CD5E1E74E8C900508FEC /* DataModel.xcdatamodel */,
+			);
+			currentVersion = B116CD5E1E74E8C900508FEC /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B1B089421E6FBF900089ABB0 /* Project object */;
 }
