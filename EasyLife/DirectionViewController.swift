@@ -33,6 +33,8 @@ class DirectionViewController: UIViewController, UITabBarDelegate{
     // protocol to set location for the schedule
     var scheduleSetLocationProtocolDelegate: ScheduleSetLocationProtocol? = nil
     
+    // whether the view is opened by a Schedule View Controller
+    var fromScheduleVC = false
     
     
     // coordinates of source and destination
@@ -285,7 +287,11 @@ class DirectionViewController: UIViewController, UITabBarDelegate{
             // - Attribution: http://stackoverflow.com/questions/35550966/swift-add-show-action-to-button-programmatically
             let confirmButton = UIButton(frame: CGRect(x: 300 + 375 * i, y: 15, width: 50, height: 50))
             confirmButton.setBackgroundImage(UIImage(named: "confirm"), for: .normal)
-            confirmButton.addTarget(self, action: #selector(self.sendDataToSchedule), for: UIControlEvents.touchUpInside)
+            if fromScheduleVC == true {
+                confirmButton.addTarget(self, action: #selector(self.sendDataToSchedule), for: UIControlEvents.touchUpInside)
+            } else {
+                print("click")
+            }
             
             DispatchQueue.main.async {
                 self.scrollView?.addSubview(timeLabel)

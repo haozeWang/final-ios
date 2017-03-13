@@ -328,6 +328,7 @@ extension MapViewController : MKMapViewDelegate {
         vc.sourceCoordinate = self.currentLocation?.coordinate
         vc.destCoordinate = self.selectedPin?.coordinate
         vc.searchRegion = mapView.region
+        vc.fromScheduleVC = self.fromScheduleVC
         present(vc, animated: true, completion: nil)
         vc.sourceLabel.text = "My Location"
         vc.destLabel.text = selectedPin?.name

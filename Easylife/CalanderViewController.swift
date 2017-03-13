@@ -161,7 +161,7 @@ class CalanderViewController: UIViewController,UITableViewDelegate,UICollectionV
         }
         
         
-        showLabel.text = "\(month as! String)  \(self.currentYear(date))"
+        showLabel.text = "\(month as String)  \(self.currentYear(date))"
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
