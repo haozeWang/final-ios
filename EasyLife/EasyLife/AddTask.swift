@@ -128,7 +128,7 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
     
     
     @IBAction func Submit(_ sender: Any) {
-        if(UITextLabel.text == nil){
+        if(UITextLabel.text == ""){
             let alert = UIAlertController(title: "Error",message:"Please set the title of this schedule", preferredStyle:UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ok,I know", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
@@ -160,6 +160,8 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
         temp.point_begin = "lat=41.881832&lon=-87.623177"
         temp.point_end = "lat=41.881832&lon=-87.623177"
         print(temp.id)
+        var sche = schedule()
+        sche =  sche.copy(task: temp)
         schedule.scheduleInstance.insertDate(schedule: temp)
         updateDelegate?.updatadayschedule()
         
@@ -180,7 +182,7 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
                 let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: remindDate)
                 let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate,
                                                             repeats: false)
-                let identifier = String(temp.id)
+                let identifier = String(sche.id)
                 let request = UNNotificationRequest(identifier: identifier,
                                                     content: content, trigger: trigger)
                 center.add(request, withCompletionHandler: { (error) in
