@@ -9,8 +9,7 @@
 import UIKit
 import CoreData
 import  UserNotifications
-class EveryDaySchedule: UITableViewController,UIActionSheetDelegate {
-class EveryDaySchedule: UITableViewController,UIActionSheetDelegate,updateview {
+class EveryDaySchedule: UITableViewController,UIActionSheetDelegate, UpdateViewProtocol {
     
     var task: [schedule]!
     var date : String!
@@ -101,7 +100,8 @@ class EveryDaySchedule: UITableViewController,UIActionSheetDelegate,updateview {
         
         let deleteActionButton: UIAlertAction = UIAlertAction(title: "Do not use map", style: .default)
         { void in
-            let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddTask") as UIViewController
+            let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddTask") as! AddTask
+            viewController.updateDelegate = self
             self.present(viewController, animated: true, completion: nil)
         }
         actionSheetController.addAction(deleteActionButton)
@@ -132,7 +132,7 @@ class EveryDaySchedule: UITableViewController,UIActionSheetDelegate,updateview {
         }
     }
     
-    func updatadayschedule(){
+    func updatedayschedule(){
         if(date == nil){
             let currdate = getstringfromdate(date: Date())
             task =  schedule.scheduleInstance.fetchDate(date: currdate)

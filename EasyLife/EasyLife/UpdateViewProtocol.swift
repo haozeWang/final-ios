@@ -8,6 +8,6 @@
 
 import UIKit
 
-protocol updateview {
-    func updatadayschedule()
+protocol UpdateViewProtocol {
+    func updatedayschedule()
 }

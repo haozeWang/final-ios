@@ -25,7 +25,7 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
     @IBOutlet weak var SetRemTime: UIButton!
     @IBOutlet weak var YearPickerView: UIPickerView!
     var point = ""
-    var updateDelegate: updateview? = nil
+    var updateDelegate: UpdateViewProtocol? = nil
     
     // current location
     var currentLatitude: Double = +41.80285605
@@ -33,7 +33,7 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
     
     // location manager
     let locationManager = CLLocationManager()
-    var update: updateview? = nil
+    var update: UpdateViewProtocol? = nil
     var whether_set_begin_time = false
     var whether_set_rem_time = false
     var whether_set_title = false
@@ -164,7 +164,7 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
        var sche = schedule()
         sche =  sche.copy(task: temp)
         schedule.scheduleInstance.insertDate(schedule: temp)
-        updateDelegate?.updatadayschedule()
+        updateDelegate?.updatedayschedule()
         
         // set notifications
         let center = UNUserNotificationCenter.current()
@@ -206,8 +206,8 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
         })
        
         
-        update?.updatadayschedule()
-        self.dismiss(animated: true, completion: nil);
+        update?.updatedayschedule()
+            self.dismiss(animated: true, completion: nil);
         }
     }
     
