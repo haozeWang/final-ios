@@ -594,21 +594,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ky-TC-I60">
-                                <rect key="frame" x="166" y="95" width="42" height="21"/>
+                                <rect key="frame" x="92" y="72" width="178" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hF-0S-sxY">
-                                <rect key="frame" x="166" y="164" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eua-tq-c1G">
-                                <rect key="frame" x="166" y="236" width="42" height="21"/>
+                                <rect key="frame" x="0.0" y="116" width="375" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -644,21 +637,41 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQx-Xi-0M9">
+                                <rect key="frame" x="188" y="229" width="158" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eua-tq-c1G">
+                                <rect key="frame" x="188" y="191" width="158" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="ALS-Am-x4e"/>
                     <connections>
+                        <outlet property="begin_time" destination="Eua-tq-c1G" id="Og3-kk-efN"/>
+                        <outlet property="begincityname" destination="VSy-ma-UAY" id="zvI-Z1-C0L"/>
+                        <outlet property="desc" destination="0hF-0S-sxY" id="hjG-yl-U3J"/>
+                        <outlet property="endcityname" destination="HiF-HP-5Bu" id="XOp-8X-hGh"/>
                         <outlet property="image_begin" destination="DoX-4L-7aK" id="lkL-d0-rlA"/>
                         <outlet property="image_end" destination="Qyd-DX-Kme" id="Wwm-es-jRZ"/>
                         <outlet property="information" destination="MnG-1K-6QT" id="ux4-ng-L3M"/>
+                        <outlet property="name" destination="8Ky-TC-I60" id="3J2-lG-dDI"/>
+                        <outlet property="ram_time" destination="ZQx-Xi-0M9" id="9Qg-7I-yVv"/>
                         <outlet property="weather_begin" destination="JoQ-g0-DU9" id="OvQ-1j-fXB"/>
                         <outlet property="weather_end" destination="NgQ-Gf-Sdn" id="Epr-0w-PAT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SKx-Id-LTS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="993" y="2088"/>
+            <point key="canvasLocation" x="1034" y="2087"/>
         </scene>
         <!--Weatherforecast-->
         <scene sceneID="ilA-KW-eQ4">
@@ -1118,7 +1131,7 @@
                                 <connections>
                                     <outlet property="fin_time" destination="2lY-vd-MGk" id="yhW-hX-RJW"/>
                                     <outlet property="title" destination="VBD-3Q-MvL" id="9vP-31-4X2"/>
-                                    <segue destination="FXk-JR-gaj" kind="push" id="sye-rk-PKC"/>
+                                    <segue destination="FXk-JR-gaj" kind="push" identifier="showweather" id="sye-rk-PKC"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

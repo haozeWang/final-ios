@@ -25,8 +25,6 @@
 		B116CD5F1E74E8C900508FEC /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B116CD5D1E74E8C900508FEC /* DataModel.xcdatamodeld */; };
 		B116CD691E74EA1F00508FEC /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B116CD681E74EA1F00508FEC /* DataController.swift */; };
 		B116CD6D1E74EE2E00508FEC /* schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B116CD6C1E74EE2E00508FEC /* schedule.swift */; };
-		B116CD741E75061800508FEC /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B116CD721E75061800508FEC /* Task+CoreDataClass.swift */; };
-		B116CD751E75061800508FEC /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B116CD731E75061800508FEC /* Task+CoreDataProperties.swift */; };
 		B116CD771E7509B300508FEC /* EveryDayScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B116CD761E7509B300508FEC /* EveryDayScheduleCell.swift */; };
 		B13AF9821E70AB90001EB206 /* CalanderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13AF9811E70AB90001EB206 /* CalanderViewController.swift */; };
 		B13AF98C1E70BEE7001EB206 /* CalenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13AF98B1E70BEE7001EB206 /* CalenderCell.swift */; };
@@ -48,6 +46,8 @@
 		B1E866741E73A53100ED5F09 /* AddSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E866731E73A53100ED5F09 /* AddSchedule.swift */; };
 		B1EEA1641E6FF907001116A6 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EEA1631E6FF907001116A6 /* Weather.swift */; };
 		B1FBBF8B1E75CD8B00058B74 /* UpdateViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FBBF8A1E75CD8B00058B74 /* UpdateViewProtocal.swift */; };
+		B1FBBF9A1E76183B00058B74 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FBBF981E76183B00058B74 /* Task+CoreDataClass.swift */; };
+		B1FBBF9B1E76183B00058B74 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FBBF991E76183B00058B74 /* Task+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,8 +80,6 @@
 		B116CD5E1E74E8C900508FEC /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		B116CD681E74EA1F00508FEC /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		B116CD6C1E74EE2E00508FEC /* schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = schedule.swift; sourceTree = "<group>"; };
-		B116CD721E75061800508FEC /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
-		B116CD731E75061800508FEC /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B116CD761E7509B300508FEC /* EveryDayScheduleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EveryDayScheduleCell.swift; sourceTree = "<group>"; };
 		B13AF9811E70AB90001EB206 /* CalanderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalanderViewController.swift; path = ../CalanderViewController.swift; sourceTree = "<group>"; };
 		B13AF98B1E70BEE7001EB206 /* CalenderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderCell.swift; sourceTree = "<group>"; };
@@ -108,6 +106,8 @@
 		B1E866731E73A53100ED5F09 /* AddSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSchedule.swift; sourceTree = "<group>"; };
 		B1EEA1631E6FF907001116A6 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		B1FBBF8A1E75CD8B00058B74 /* UpdateViewProtocal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateViewProtocal.swift; sourceTree = "<group>"; };
+		B1FBBF981E76183B00058B74 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B1FBBF991E76183B00058B74 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,8 +131,8 @@
 		B1B089411E6FBF900089ABB0 = {
 			isa = PBXGroup;
 			children = (
-				B116CD721E75061800508FEC /* Task+CoreDataClass.swift */,
-				B116CD731E75061800508FEC /* Task+CoreDataProperties.swift */,
+				B1FBBF981E76183B00058B74 /* Task+CoreDataClass.swift */,
+				B1FBBF991E76183B00058B74 /* Task+CoreDataProperties.swift */,
 				B1B0894C1E6FBF900089ABB0 /* EasyLife */,
 				B1B089611E6FBF900089ABB0 /* EasyLifeTests */,
 				B1B0894B1E6FBF900089ABB0 /* Products */,
@@ -153,7 +153,6 @@
 			children = (
 				A9B455041E752FE700F0C71D /* Main.storyboard */,
 				B19C97B21E70FE25000CD117 /* SharedNetwork.swift */,
-				B19C97B61E71162E000CD117 /* ScheduleDetail.swift */,
 				B19C97B11E70FA9E000CD117 /* EasyLife-Bridging-Header.h */,
 				B13AF98B1E70BEE7001EB206 /* CalenderCell.swift */,
 				B116CD681E74EA1F00508FEC /* DataController.swift */,
@@ -170,6 +169,7 @@
 				B116CD5D1E74E8C900508FEC /* DataModel.xcdatamodeld */,
 				B116CD401E74AC9700508FEC /* AddTask.swift */,
 				B1E866731E73A53100ED5F09 /* AddSchedule.swift */,
+				B19C97B61E71162E000CD117 /* ScheduleDetail.swift */,
 				B116CD3E1E74A2D900508FEC /* EveryDaySchedule.swift */,
 				B1E866691E73517700ED5F09 /* weatherforecastTableViewCell.swift */,
 				B1E866671E73213000ED5F09 /* weatherforecastcell.swift */,
@@ -323,6 +323,7 @@
 				B116CD5F1E74E8C900508FEC /* DataModel.xcdatamodeld in Sources */,
 				B1E866741E73A53100ED5F09 /* AddSchedule.swift in Sources */,
 				B13AF9821E70AB90001EB206 /* CalanderViewController.swift in Sources */,
+				B1FBBF9B1E76183B00058B74 /* Task+CoreDataProperties.swift in Sources */,
 				B1E866681E73213000ED5F09 /* weatherforecastcell.swift in Sources */,
 				A97D866C1E75D4E300DA12F7 /* ScheduleSetLocationProtocol.swift in Sources */,
 				B1B089501E6FBF900089ABB0 /* ViewController.swift in Sources */,
@@ -333,13 +334,13 @@
 				A9B455031E75107F00F0C71D /* PlaceDetailViewController.swift in Sources */,
 				A9CD78A61E7379F70024F2A1 /* MapSearchProtocol.swift in Sources */,
 				B19C97B31E70FE25000CD117 /* SharedNetwork.swift in Sources */,
-				B116CD741E75061800508FEC /* Task+CoreDataClass.swift in Sources */,
 				B1E8666A1E73517700ED5F09 /* weatherforecastTableViewCell.swift in Sources */,
 				B1FBBF8B1E75CD8B00058B74 /* UpdateViewProtocal.swift in Sources */,
 				B19C97B71E71162E000CD117 /* ScheduleDetail.swift in Sources */,
 				B116CD6D1E74EE2E00508FEC /* schedule.swift in Sources */,
 				A9CD78AC1E737A5F0024F2A1 /* DecodePolyline.m in Sources */,
 				A9CD78AF1E7386470024F2A1 /* DirectionViewController.swift in Sources */,
+				B1FBBF9A1E76183B00058B74 /* Task+CoreDataClass.swift in Sources */,
 				A9CD78B51E73E0990024F2A1 /* LocationSearchProtocol.swift in Sources */,
 				B116CD411E74AC9700508FEC /* AddTask.swift in Sources */,
 				A9CD78A81E737A0E0024F2A1 /* ReachAbility.swift in Sources */,
@@ -347,7 +348,6 @@
 				B116CD3F1E74A2D900508FEC /* EveryDaySchedule.swift in Sources */,
 				B116CD691E74EA1F00508FEC /* DataController.swift in Sources */,
 				B1B0894E1E6FBF900089ABB0 /* AppDelegate.swift in Sources */,
-				B116CD751E75061800508FEC /* Task+CoreDataProperties.swift in Sources */,
 				B1E866661E731E8900ED5F09 /* weatherforecast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

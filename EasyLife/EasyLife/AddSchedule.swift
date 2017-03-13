@@ -29,6 +29,7 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
     @IBOutlet weak var show_minute: UILabel!
     @IBOutlet weak var TextField: UITextView!
     
+    
     // information about source and destination
     var sourceLatitude = "0.0"
     var sourceLongitude = "0.0"
@@ -37,8 +38,8 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
     var sourceName = "source"
     var destName = "destination"
     var expectedTime = 0
-    
-    
+    var point_begin = ""
+    var point_end = ""
     
     var flag = 1
     var changeflag = 1
@@ -160,8 +161,10 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
         let end = "\(createstringfromdate(date: record_date_end)) \(Remhours.text! as String)\(RemMinute.text! as String)"
         temp.fin_time = getdatefromstring(string: begin) as NSDate?
         temp.ram_time = getdatefromstring(string: end) as NSDate?
-        temp.date = getstringfromdate_yy(date: Date())
+        temp.date = getstringfromdate_yy(date: temp.fin_time as! Date)
         temp.id = Int64(Date().timeIntervalSince1970)
+        temp.point_begin = point_begin
+        temp.point_end = point_end
         print(temp.id)
         schedule.scheduleInstance.insertDate(schedule: temp)
         self.dismiss(animated: true, completion: nil);
@@ -391,9 +394,7 @@ extension AddSchedule: ScheduleSetLocationProtocol {
         RemMonth.text = getstringfromdate(date: date as Date)
         Remhours.text = "\(getstringfromdate_hour(date: date as Date)):"
         RemMinute.text = getstringfromdate_minute(date: date as Date)
-        print(destLatitude)
-        print(destLongitude)
-        print(self.destName)
-        print(self.expectedTime)
+        point_begin = "lat=\(sourceLatitude)&lon=\(sourceLongitude)"
+        point_end = "lat=\(sourceLatitude)&lon=\(sourceLongitude)"
     }
 }

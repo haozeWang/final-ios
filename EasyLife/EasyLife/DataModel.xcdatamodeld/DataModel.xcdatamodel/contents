@@ -11,11 +11,13 @@
         <attribute name="end" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fin_time" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="point_begin" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="point_end" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ram_time" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="Person" positionX="-45" positionY="0" width="128" height="75"/>
-        <element name="Task" positionX="-18" positionY="45" width="128" height="165"/>
+        <element name="Task" positionX="-18" positionY="45" width="128" height="195"/>
     </elements>
 </model>

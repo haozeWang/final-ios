@@ -22,7 +22,7 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
     @IBOutlet weak var TextField: UITextView!
     @IBOutlet weak var SetRemTime: UIButton!
     @IBOutlet weak var YearPickerView: UIPickerView!
-    
+    var point = ""
     var updateDelegate: updateview? = nil
     
     var temp_view : String!
@@ -123,6 +123,8 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
         temp.ram_time = getdatefromstring(string: end) as NSDate?
         temp.date = getstringfromdate_yy(date: temp.fin_time as! Date)
         temp.id = Int64(Date().timeIntervalSince1970)
+        temp.point_begin = ""
+        temp.point_end = ""
         print(temp.id)
         schedule.scheduleInstance.insertDate(schedule: temp)
         updateDelegate?.updatadayschedule()

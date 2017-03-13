@@ -57,8 +57,8 @@ class schedule: NSObject {
     func removeDate(id : Int64){
         let moc = DataController().managedObjectContext
         let TaskFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
-        let predicate = NSPredicate(format: "id = \(id)")
-        TaskFetch.predicate = predicate
+       // let predicate = NSPredicate(format: "id = \(id)")
+       // TaskFetch.predicate = predicate
        
         do{
             let fetchTask = try moc.fetch(TaskFetch) as! [Task]

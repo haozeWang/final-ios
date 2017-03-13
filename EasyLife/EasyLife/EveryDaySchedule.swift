@@ -102,6 +102,20 @@ class EveryDaySchedule: UITableViewController,UIActionSheetDelegate {
 
     }
     
+       override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showeather"
+        {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let object = task[indexPath.row]
+                let controller = segue.destination as! ScheduleDetail
+                controller.point_begin = object.point_begin!
+                controller.point_begin = object.point_end!
+                controller.location_begin = object.begin!
+                controller.location_end = object.end!
+                controller.task = object
+            }
+        }
+      }
     
 
     /*
