@@ -13,6 +13,7 @@ class EveryDaySchedule: UITableViewController,UIActionSheetDelegate {
     var task: [schedule]!
     var date : String!
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         if(date == nil){
             let currdate = getstringfromdate(date: Date())
