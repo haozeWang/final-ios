@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import  UserNotifications
 class EveryDaySchedule: UITableViewController,UIActionSheetDelegate {
     
     var task: [schedule]!
@@ -111,6 +112,13 @@ class EveryDaySchedule: UITableViewController,UIActionSheetDelegate {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
            let sch = task[indexPath.row]
+            
+            // delete the notification
+            let identifier = sch.id
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
+            
+            
+            
            sch.removeDate(id: sch.id)
          // tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             if(date == nil){
