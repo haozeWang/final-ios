@@ -206,7 +206,7 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
         })
        
         
-        update?.updatedayschedule()
+            update?.updatedayschedule()
             self.dismiss(animated: true, completion: nil);
         }
     }
