@@ -26,7 +26,6 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
     @IBOutlet weak var YearPickerView: UIPickerView!
     var point = ""
     var updateDelegate: updateview? = nil
-<<<<<<< HEAD
     
     // current location
     var currentLatitude: Double = +41.80285605
@@ -35,11 +34,9 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
     // location manager
     let locationManager = CLLocationManager()
     
-=======
     var whether_set_begin_time = false
     var whether_set_rem_time = false
     var whether_set_title = false
->>>>>>> 8fa5dc12f812ad6d165a07d5bdba71bd8b423f1e
     var temp_view : String!
     var temp_field : String!
     var flag = 1
@@ -206,12 +203,9 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
         })
        
         
-<<<<<<< HEAD
         
-=======
         self.dismiss(animated: true, completion: nil);
         }
->>>>>>> 8fa5dc12f812ad6d165a07d5bdba71bd8b423f1e
     }
     
     
