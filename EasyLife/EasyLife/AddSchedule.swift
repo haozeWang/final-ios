@@ -166,6 +166,7 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
         temp.id = Int64(Date().timeIntervalSince1970)
         temp.point_begin = point_begin
         temp.point_end = point_end
+        temp.exp_time = Int64(expectedTime)
         print(temp.id)
         schedule.scheduleInstance.insertDate(schedule: temp)
         

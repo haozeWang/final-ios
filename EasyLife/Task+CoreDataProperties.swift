@@ -22,9 +22,10 @@ extension Task {
     @NSManaged public var end: String?
     @NSManaged public var fin_time: NSDate?
     @NSManaged public var id: Int64
-    @NSManaged public var ram_time: NSDate?
-    @NSManaged public var title: String?
     @NSManaged public var point_begin: String?
     @NSManaged public var point_end: String?
+    @NSManaged public var ram_time: NSDate?
+    @NSManaged public var title: String?
+    @NSManaged public var exp_time: Int64
 
 }
