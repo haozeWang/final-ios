@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="tkP-mn-hZR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="tkP-mn-hZR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -593,22 +593,15 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ky-TC-I60">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ky-TC-I60">
                                 <rect key="frame" x="92" y="72" width="178" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hF-0S-sxY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hF-0S-sxY">
                                 <rect key="frame" x="0.0" y="116" width="375" height="67"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MnG-1K-6QT">
-                                <rect key="frame" x="24" y="547" width="344" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -617,17 +610,15 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HiF-HP-5Bu">
                                 <rect key="frame" x="279" y="300" width="67" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="xGU-vE-Zta" kind="push" id="zPx-aP-wNa"/>
+                                    <action selector="getendweather:" destination="FXk-JR-gaj" eventType="touchUpInside" id="1pP-sn-IHX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VSy-ma-UAY">
                                 <rect key="frame" x="34" y="304" width="69" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="xGU-vE-Zta" kind="push" id="zuz-Xw-aGK"/>
+                                    <action selector="getbeginweather:" destination="FXk-JR-gaj" eventType="touchUpInside" id="0fa-9n-8eM"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="tem" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JoQ-g0-DU9">
@@ -651,15 +642,22 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MnG-1K-6QT">
+                                <rect key="frame" x="9" y="538" width="344" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="ALS-Am-x4e"/>
                     <connections>
                         <outlet property="begin_time" destination="Eua-tq-c1G" id="Og3-kk-efN"/>
-                        <outlet property="begincityname" destination="VSy-ma-UAY" id="zvI-Z1-C0L"/>
+                        <outlet property="begincityname" destination="VSy-ma-UAY" id="umg-tQ-WTf"/>
                         <outlet property="desc" destination="0hF-0S-sxY" id="hjG-yl-U3J"/>
-                        <outlet property="endcityname" destination="HiF-HP-5Bu" id="XOp-8X-hGh"/>
+                        <outlet property="endcityname" destination="HiF-HP-5Bu" id="ESn-t1-6qg"/>
                         <outlet property="image_begin" destination="DoX-4L-7aK" id="lkL-d0-rlA"/>
                         <outlet property="image_end" destination="Qyd-DX-Kme" id="Wwm-es-jRZ"/>
                         <outlet property="information" destination="MnG-1K-6QT" id="ux4-ng-L3M"/>
@@ -671,12 +669,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SKx-Id-LTS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1034" y="2087"/>
+            <point key="canvasLocation" x="1032.8" y="2086.5067466266869"/>
         </scene>
         <!--Weatherforecast-->
         <scene sceneID="ilA-KW-eQ4">
             <objects>
-                <viewController id="xGU-vE-Zta" customClass="weatherforecast" customModule="EasyLife" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="weatherforecast" storyboardIdentifier="weatherforecast" id="xGU-vE-Zta" customClass="weatherforecast" customModule="EasyLife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="593-6R-baC"/>
                         <viewControllerLayoutGuide type="bottom" id="GQG-ue-ToR"/>
@@ -816,7 +814,7 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nxo-Uw-PDf">
-                                <rect key="frame" x="125" y="144" width="113" height="21"/>
+                                <rect key="frame" x="93" y="144" width="178" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -848,7 +846,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xgf-9p-a9J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1999" y="2087"/>
+            <point key="canvasLocation" x="2024.8" y="2086.5067466266869"/>
         </scene>
         <!--Add Schedule-->
         <scene sceneID="7DB-BV-0HW">
@@ -1080,7 +1078,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W9U-bn-KaL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4167.1999999999998" y="1833.7331334332835"/>
+            <point key="canvasLocation" x="4078" y="1834"/>
         </scene>
         <!--Every Day Schedule-->
         <scene sceneID="R70-Jg-Kut">
@@ -1131,7 +1129,7 @@
                                 <connections>
                                     <outlet property="fin_time" destination="2lY-vd-MGk" id="yhW-hX-RJW"/>
                                     <outlet property="title" destination="VBD-3Q-MvL" id="9vP-31-4X2"/>
-                                    <segue destination="FXk-JR-gaj" kind="push" identifier="showweather" id="sye-rk-PKC"/>
+                                    <segue destination="FXk-JR-gaj" kind="push" identifier="showweather" id="03Y-dg-Vyf"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1385,6 +1383,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R2V-c5-xp2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-1430" y="201"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ddq-UQ-4vf">
@@ -1417,6 +1416,5 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Oyd-aq-rpc"/>
-        <segue reference="zuz-Xw-aGK"/>
     </inferredMetricsTieBreakers>
 </document>

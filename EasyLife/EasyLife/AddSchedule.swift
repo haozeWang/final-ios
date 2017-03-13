@@ -428,6 +428,7 @@ extension AddSchedule: ScheduleSetLocationProtocol {
         var time = Int(getdatefromstring(string: begin).timeIntervalSince1970)
         time = time - expectedTime
         let date = NSDate(timeIntervalSince1970: TimeInterval(time))
+        record_date_end = date as Date!
         RemMonth.text = getstringfromdate(date: date as Date)
         Remhours.text = "\(getstringfromdate_hour(date: date as Date)):"
         RemMinute.text = getstringfromdate_minute(date: date as Date)
