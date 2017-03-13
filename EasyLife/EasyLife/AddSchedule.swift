@@ -25,12 +25,13 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
     @IBOutlet weak var Month: UILabel!
     @IBOutlet weak var YearPickerView: UIPickerView!
     @IBOutlet weak var ScheduleLabel: UILabel!
-    
+   
     @IBOutlet weak var show_hour: UILabel!
     @IBOutlet weak var show_minute: UILabel!
     @IBOutlet weak var TextField: UITextView!
     var set_fin_time = false
-    
+   // var update: UpdateViewProtocol? = nil
+    var updateDelegate: UpdateViewProtocol? = nil
     // information about source and destination
     var sourceLatitude = "0.0"
     var sourceLongitude = "0.0"
@@ -52,6 +53,9 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
     var minutes: [String] = ["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60"]
     override func viewDidLoad() {
         super.viewDidLoad()
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "schedule.jpeg")
+        self.view.insertSubview(backgroundImage, at: 0)
         TextField.delegate = self
         YearPickerView.delegate = self
         YearPickerView.dataSource = self
@@ -211,7 +215,7 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
             }
         })
         
- 
+        updateDelegate?.updatedayschedule()
         self.dismiss(animated: true, completion: nil);
     }
     }

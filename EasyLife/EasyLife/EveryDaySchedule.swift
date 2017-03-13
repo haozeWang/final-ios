@@ -92,10 +92,12 @@ class EveryDaySchedule: UITableViewController,UIActionSheetDelegate, UpdateViewP
         
         let saveActionButton: UIAlertAction = UIAlertAction(title: "Use Map", style: .default)
         { void in
-            let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddSchedule") as UIViewController
+            let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HaveMap") as! AddSchedule
+            viewController.updateDelegate = self
             self.present(viewController, animated: true, completion: nil)
 
         }
+        
         actionSheetController.addAction(saveActionButton)
         
         let deleteActionButton: UIAlertAction = UIAlertAction(title: "Do not use map", style: .default)
