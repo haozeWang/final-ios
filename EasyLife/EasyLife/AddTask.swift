@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import UserNotifications
+import MapKit
 class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate{
 
     @IBOutlet weak var UITextLabel: UITextField!
@@ -25,6 +26,13 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
     @IBOutlet weak var YearPickerView: UIPickerView!
     var point = ""
     var updateDelegate: updateview? = nil
+    
+    // current location
+    var currentLatitude: Double = +41.80285605
+    var currentLongitude: Double = -87.58427286
+    
+    // location manager
+    let locationManager = CLLocationManager()
     
     var temp_view : String!
     var temp_field : String!
@@ -59,7 +67,12 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
         setTextField()
         let myGesture = UITapGestureRecognizer(target: self, action:#selector(self.tappedAwayFunction(sender:)) )
         self.view.addGestureRecognizer(myGesture)
-        // Do any additional setup after loading the view.
+        
+        // load location
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
     }
     
     func tappedAwayFunction(sender: UITapGestureRecognizer){
@@ -157,16 +170,22 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
                         print(error)
                     }
                 })
+                self.dismiss(animated: true, completion: nil);
                 
             } else {
                 // if not allowed
-                print("Notification Not Allowed!")
+                print("Notification Not Allowed")
+                let alert = UIAlertController(title: "Attention", message: "Notification NOT Allowed!", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(action) -> Void in
+                    self.dismiss(animated: true, completion: nil)
+                }))
+                self.present(alert, animated: true, completion: nil)
             }
         })
         
         
         
-        self.dismiss(animated: true, completion: nil);
+        
     }
     
     
@@ -380,4 +399,22 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
     }
     */
 
+}
+
+
+
+
+extension AddTask: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            currentLatitude = location.coordinate.latitude
+            currentLongitude = location.coordinate.longitude
+            print(location.coordinate)
+        }
+    }
+    
+    // print out the error
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("error: \(error)")
+    }
 }

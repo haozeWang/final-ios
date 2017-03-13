@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import MapKit
 
 private let reuseIdentifier = "Cell"
 
@@ -19,6 +20,8 @@ class CalanderViewController: UIViewController,UITableViewDelegate,UICollectionV
     var date:Date!
     var weekArray:[String] = []
     var rec_month = getstringfromdate_M(date: Date())
+    
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,12 +37,16 @@ class CalanderViewController: UIViewController,UITableViewDelegate,UICollectionV
         self.setCollectionViewLayout()
         
         
-        // ask for notification approvals
+        // ask for notification permission
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {allowed, error in
             if !allowed {
                 print("Not Allowed!")
             }
         })
+        
+        // ask for location permission
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
     }
     
     func setCollectionViewLayout(){
