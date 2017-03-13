@@ -2,7 +2,7 @@
 //  Task+CoreDataProperties.swift
 //  EasyLife
 //
-//  Created by 王昊泽 on 17/3/11.
+//  Created by 王昊泽 on 17/3/12.
 //  Copyright © 2017年 Haoze Wang. All rights reserved.
 //
 
@@ -24,5 +24,7 @@ extension Task {
     @NSManaged public var id: Int64
     @NSManaged public var ram_time: NSDate?
     @NSManaged public var title: String?
+    @NSManaged public var point_begin: String?
+    @NSManaged public var point_end: String?
 
 }

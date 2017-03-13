@@ -16,8 +16,19 @@ class ScheduleDetail: UIViewController {
     @IBOutlet weak var information: UILabel!
     @IBOutlet weak var image_end: UIImageView!
     @IBOutlet weak var image_begin: UIImageView!
-    var location_begin = "beijing"
-    var location_end = "shanghai"
+    @IBOutlet weak var desc: UILabel!
+    
+    @IBOutlet weak var ram_time: UILabel!
+    @IBOutlet weak var begin_time: UILabel!
+    
+    @IBOutlet weak var endcityname: UIButton!
+    @IBOutlet weak var begincityname: UIButton!
+    @IBOutlet weak var name: UILabel!
+    var location_begin = "chicago"
+    var location_end = "chicago"
+    var point_begin = "lat=41.881832&lon=-87.623177"
+    var point_end = "lat=41.881832&lon=-87.623177"
+    var task : Task!
     var date_begin: Weather!
     var date_end: Weather!
     var url:String!
@@ -42,10 +53,10 @@ class ScheduleDetail: UIViewController {
         
         var url: String!
         if(flag == 1){
-            url = "http://api.openweathermap.org/data/2.5/weather?q=\(location_begin)&appid=e5ad7ed727b66d69dc3c323ad8b8fd71"
+            url = "http://api.openweathermap.org/data/2.5/weather?\(point_begin)&appid=e5ad7ed727b66d69dc3c323ad8b8fd71"
         }
         if(flag == 2){
-            url = "http://api.openweathermap.org/data/2.5/weather?q=\(location_end)&appid=e5ad7ed727b66d69dc3c323ad8b8fd71"
+            url = "http://api.openweathermap.org/data/2.5/weather?\(point_end)&appid=e5ad7ed727b66d69dc3c323ad8b8fd71"
         }
         
         SharedNetwork.SharedInstance.grabSomeData(url){(response) -> Void in
@@ -88,7 +99,7 @@ class ScheduleDetail: UIViewController {
         var time = Int(date.timeIntervalSince1970)
         time = time - 21800
         print(time)
-        url = "http://api.openweathermap.org/data/2.5/forecast?q=\(location_end)&appid=e5ad7ed727b66d69dc3c323ad8b8fd71"
+        url = "http://api.openweathermap.org/data/2.5/forecast?\(point_end)&appid=e5ad7ed727b66d69dc3c323ad8b8fd71"
         print(url)
         SharedNetwork.SharedInstance.grabSomeData(url){(response) -> Void in
             
