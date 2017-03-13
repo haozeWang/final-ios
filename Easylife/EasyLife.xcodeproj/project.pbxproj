@@ -36,8 +36,8 @@
 		B1B089551E6FBF900089ABB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1B089541E6FBF900089ABB0 /* Assets.xcassets */; };
 		B1B089581E6FBF900089ABB0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1B089561E6FBF900089ABB0 /* LaunchScreen.storyboard */; };
 		B1B089631E6FBF900089ABB0 /* EasyLifeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B089621E6FBF900089ABB0 /* EasyLifeTests.swift */; };
-		B1B39E6E1E764599005198B2 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B39E6C1E764599005198B2 /* Task+CoreDataClass.swift */; };
-		B1B39E6F1E764599005198B2 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B39E6D1E764599005198B2 /* Task+CoreDataProperties.swift */; };
+		B1B39E721E766064005198B2 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B39E701E766064005198B2 /* Task+CoreDataClass.swift */; };
+		B1B39E731E766064005198B2 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B39E711E766064005198B2 /* Task+CoreDataProperties.swift */; };
 		B1E866661E731E8900ED5F09 /* weatherforecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E866651E731E8900ED5F09 /* weatherforecast.swift */; };
 		B1E866681E73213000ED5F09 /* weatherforecastcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E866671E73213000ED5F09 /* weatherforecastcell.swift */; };
 		B1E8666A1E73517700ED5F09 /* weatherforecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E866691E73517700ED5F09 /* weatherforecastTableViewCell.swift */; };
@@ -96,8 +96,8 @@
 		B1B0895E1E6FBF900089ABB0 /* EasyLifeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyLifeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1B089621E6FBF900089ABB0 /* EasyLifeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyLifeTests.swift; sourceTree = "<group>"; };
 		B1B089641E6FBF900089ABB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B1B39E6C1E764599005198B2 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
-		B1B39E6D1E764599005198B2 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B1B39E701E766064005198B2 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B1B39E711E766064005198B2 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B1E866651E731E8900ED5F09 /* weatherforecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = weatherforecast.swift; sourceTree = "<group>"; };
 		B1E866671E73213000ED5F09 /* weatherforecastcell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = weatherforecastcell.swift; sourceTree = "<group>"; };
 		B1E866691E73517700ED5F09 /* weatherforecastTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = weatherforecastTableViewCell.swift; sourceTree = "<group>"; };
@@ -131,8 +131,8 @@
 		B1B089411E6FBF900089ABB0 = {
 			isa = PBXGroup;
 			children = (
-				B1B39E6C1E764599005198B2 /* Task+CoreDataClass.swift */,
-				B1B39E6D1E764599005198B2 /* Task+CoreDataProperties.swift */,
+				B1B39E701E766064005198B2 /* Task+CoreDataClass.swift */,
+				B1B39E711E766064005198B2 /* Task+CoreDataProperties.swift */,
 				B1B0894C1E6FBF900089ABB0 /* EasyLife */,
 				B1B089611E6FBF900089ABB0 /* EasyLifeTests */,
 				B1B0894B1E6FBF900089ABB0 /* Products */,
@@ -323,7 +323,7 @@
 				B116CD5F1E74E8C900508FEC /* DataModel.xcdatamodeld in Sources */,
 				B1E866741E73A53100ED5F09 /* AddSchedule.swift in Sources */,
 				B13AF9821E70AB90001EB206 /* CalanderViewController.swift in Sources */,
-				B1B39E6F1E764599005198B2 /* Task+CoreDataProperties.swift in Sources */,
+				B1B39E731E766064005198B2 /* Task+CoreDataProperties.swift in Sources */,
 				B1E866681E73213000ED5F09 /* weatherforecastcell.swift in Sources */,
 				A97D866C1E75D4E300DA12F7 /* ScheduleSetLocationProtocol.swift in Sources */,
 				B1B089501E6FBF900089ABB0 /* ViewController.swift in Sources */,
@@ -340,7 +340,7 @@
 				B116CD6D1E74EE2E00508FEC /* schedule.swift in Sources */,
 				A9CD78AC1E737A5F0024F2A1 /* DecodePolyline.m in Sources */,
 				A9CD78AF1E7386470024F2A1 /* DirectionViewController.swift in Sources */,
-				B1B39E6E1E764599005198B2 /* Task+CoreDataClass.swift in Sources */,
+				B1B39E721E766064005198B2 /* Task+CoreDataClass.swift in Sources */,
 				A9CD78B51E73E0990024F2A1 /* LocationSearchProtocol.swift in Sources */,
 				B116CD411E74AC9700508FEC /* AddTask.swift in Sources */,
 				A9CD78A81E737A0E0024F2A1 /* ReachAbility.swift in Sources */,

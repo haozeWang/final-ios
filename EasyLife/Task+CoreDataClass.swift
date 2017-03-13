@@ -2,7 +2,7 @@
 //  Task+CoreDataClass.swift
 //  EasyLife
 //
-//  Created by 王昊泽 on 17/3/12.
+//  Created by 王昊泽 on 17/3/13.
 //  Copyright © 2017年 Haoze Wang. All rights reserved.
 //
 

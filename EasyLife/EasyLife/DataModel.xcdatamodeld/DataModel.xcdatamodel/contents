@@ -11,7 +11,7 @@
         <attribute name="end" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="exp_time" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="fin_time" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="point_begin" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="point_end" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ram_time" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>

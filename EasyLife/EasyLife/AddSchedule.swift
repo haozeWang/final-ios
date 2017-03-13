@@ -163,11 +163,10 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
         temp.fin_time = getdatefromstring(string: begin) as NSDate?
         temp.ram_time = getdatefromstring(string: end) as NSDate?
         temp.date = getstringfromdate_yy(date: temp.fin_time as! Date)
-        temp.id = Int64(Date().timeIntervalSince1970)
+        temp.id = "\(Date().timeIntervalSince1970)"
         temp.point_begin = point_begin
         temp.point_end = point_end
         temp.exp_time = Int64(expectedTime)
-        print(temp.id)
         var sche = schedule()
         sche =  sche.copy(task: temp)
         schedule.scheduleInstance.insertDate(schedule: temp)
@@ -190,7 +189,7 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
                 let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate,
                                                             repeats: false)
                 let identifier = String(sche.id)
-                let request = UNNotificationRequest(identifier: identifier,
+                let request = UNNotificationRequest(identifier: identifier!,
                                                     content: content, trigger: trigger)
                 center.add(request, withCompletionHandler: { (error) in
                     if let error = error {

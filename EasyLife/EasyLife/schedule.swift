@@ -17,7 +17,7 @@ class schedule: NSObject {
     var ram_time = NSDate()
     var point_begin = ""
     var point_end = ""
-    var id = 0
+    var id = ""
     var end = ""
     var exp_time = 0
     static let scheduleInstance = schedule()
@@ -71,12 +71,12 @@ class schedule: NSObject {
     }
     
     
-    func removeDate(id : Int64){
+    func removeDate(id : String){
         let moc = DataController().managedObjectContext
         let TaskFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
-     //   let predicate = NSPredicate(format: "id = \(id)")
-      //  TaskFetch.predicate = predicate
-       
+        let predicate = NSPredicate(format: "id == %@",id)
+        TaskFetch.predicate = predicate
+        
         do{
             let fetchTask = try moc.fetch(TaskFetch) as! [Task]
             for i in fetchTask{
@@ -101,7 +101,9 @@ class schedule: NSObject {
             temp.date = i
         }
         
-        temp.id = Int(task.id)
+        if let i = task.id{
+            temp.id = i
+        }
         temp.exp_time = Int(task.exp_time)
         if let i = task.desc{
             temp.desc = i

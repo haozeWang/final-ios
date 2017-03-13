@@ -147,20 +147,21 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
         else{
         let moc = DataController().managedObjectContext
         let temp = Task.init(entity: NSEntityDescription.entity(forEntityName: "Task", in:moc)!, insertInto: moc)
-        temp.begin = "Chicago"
-        temp.end = "Chicago"
+        temp.begin = " "
+        temp.end = " "
         temp.desc = temp_view
         temp.title = temp_field
         let begin = "\(createstringfromdate(date: record_date_begin)) \(hours.text! as String)\(Minute.text! as String)"
+        print(begin)
         let end = "\(createstringfromdate(date: record_date_end)) \(Remhours.text! as String)\(RemMinute.text! as String)"
+        print(end)
         temp.fin_time = getdatefromstring(string: begin) as NSDate?
         temp.ram_time = getdatefromstring(string: end) as NSDate?
         temp.date = getstringfromdate_yy(date: temp.fin_time as! Date)
-        temp.id = Int64(Date().timeIntervalSince1970)
-        temp.point_begin = "lat=41.881832&lon=-87.623177"
-        temp.point_end = "lat=41.881832&lon=-87.623177"
-        print(temp.id)
-        var sche = schedule()
+        temp.id = "\(Date().timeIntervalSince1970)"
+        temp.point_begin = "lat=\(currentLatitude)&lon=\(currentLongitude)"
+        temp.point_end = "lat=\(currentLatitude)&lon=\(currentLongitude)"
+       var sche = schedule()
         sche =  sche.copy(task: temp)
         schedule.scheduleInstance.insertDate(schedule: temp)
         updateDelegate?.updatadayschedule()
@@ -183,7 +184,7 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
                 let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate,
                                                             repeats: false)
                 let identifier = String(sche.id)
-                let request = UNNotificationRequest(identifier: identifier,
+                let request = UNNotificationRequest(identifier: identifier!,
                                                     content: content, trigger: trigger)
                 center.add(request, withCompletionHandler: { (error) in
                     if let error = error {

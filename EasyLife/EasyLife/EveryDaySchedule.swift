@@ -15,6 +15,7 @@ class EveryDaySchedule: UITableViewController,UIActionSheetDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+       // schedule.scheduleInstance.removeDate(id: "")
         if(date == nil){
             let currdate = getstringfromdate(date: Date())
             task =  schedule.scheduleInstance.fetchDate(date: currdate)
@@ -107,7 +108,21 @@ class EveryDaySchedule: UITableViewController,UIActionSheetDelegate {
 
     }
     
-    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+           let sch = task[indexPath.row]
+           sch.removeDate(id: sch.id)
+         // tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+            if(date == nil){
+                let currdate = getstringfromdate(date: Date())
+                task =  schedule.scheduleInstance.fetchDate(date: currdate)
+            }
+            else{
+                task =  schedule.scheduleInstance.fetchDate(date: date)
+            }
+           tableView.reloadData()
+        }
+    }
     
 
     /*
