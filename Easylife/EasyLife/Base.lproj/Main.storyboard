@@ -49,7 +49,7 @@
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QgO-5o-rYU">
-                                <rect key="frame" x="0.0" y="72" width="50" height="40"/>
+                                <rect key="frame" x="0.0" y="64" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="back2"/>
                                 <connections>
@@ -1416,7 +1416,7 @@
     <resources>
         <image name="address" width="24" height="24"/>
         <image name="back" width="128" height="128"/>
-        <image name="back2" width="64" height="64"/>
+        <image name="back2" width="256" height="256"/>
         <image name="cycle" width="25" height="25"/>
         <image name="drive" width="25" height="25"/>
         <image name="origin" width="24" height="24"/>
