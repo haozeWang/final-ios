@@ -290,7 +290,7 @@ class DirectionViewController: UIViewController, UITabBarDelegate{
             if fromScheduleVC == true {
                 confirmButton.addTarget(self, action: #selector(self.sendDataToSchedule), for: UIControlEvents.touchUpInside)
             } else {
-                print("click")
+                confirmButton.addTarget(self, action: #selector(self.newSchedule), for: UIControlEvents.touchUpInside)
             }
             
             DispatchQueue.main.async {
@@ -340,6 +340,14 @@ class DirectionViewController: UIViewController, UITabBarDelegate{
                 presentingViewController?.dismiss(animated: false, completion: nil)
             }
         }
+    }
+    
+    
+    // open a new schedule view controller to add a new schedule
+    func newSchedule() {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HaveMap") as! AddSchedule
+        
+        self.present(vc, animated: true, completion: nil)
     }
 }
 
