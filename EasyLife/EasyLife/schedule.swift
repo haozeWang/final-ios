@@ -9,7 +9,16 @@
 import UIKit
 import CoreData
 class schedule: NSObject {
-    
+    var date = ""
+    var title = ""
+    var begin = ""
+    var desc = ""
+    var fin_time = NSDate()
+    var ram_time = NSDate()
+    var point_begin = ""
+    var point_end = ""
+    var id = 0
+    var end = ""
     static let scheduleInstance = schedule()
     
      func insertDate(schedule : Task){
@@ -27,7 +36,9 @@ class schedule: NSObject {
         entity.setValue(schedule.end, forKey: "end")
         entity.setValue(schedule.fin_time, forKey: "fin_time")
         entity.setValue(schedule.ram_time, forKey: "ram_time")
-        
+        entity.setValue(schedule.point_begin, forKey: "point_begin")
+        entity.setValue(schedule.point_end, forKey: "point_end")
+        entity.setValue(schedule.id, forKey: "id")
         // we save our entity
         do {
             try moc.save()
@@ -37,7 +48,7 @@ class schedule: NSObject {
     }
     
     
-    func fetchDate(date : String) -> [Task]{
+    func fetchDate(date : String) -> [schedule]{
         let moc = DataController().managedObjectContext
         let TaskFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
         let predicate = NSPredicate(format:"date == %@", date)
@@ -45,8 +56,12 @@ class schedule: NSObject {
         TaskFetch.predicate = predicate
         
         do {
+            var temp = [schedule]()
             let fetchedTask = try moc.fetch(TaskFetch) as! [Task]
-            return fetchedTask
+            for i in fetchedTask{
+                temp.append(copy(task: i))
+            }
+            return temp
             
         } catch {
             fatalError("Failed to fetch task: \(error)")
@@ -57,8 +72,8 @@ class schedule: NSObject {
     func removeDate(id : Int64){
         let moc = DataController().managedObjectContext
         let TaskFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
-       // let predicate = NSPredicate(format: "id = \(id)")
-       // TaskFetch.predicate = predicate
+     //   let predicate = NSPredicate(format: "id = \(id)")
+      //  TaskFetch.predicate = predicate
        
         do{
             let fetchTask = try moc.fetch(TaskFetch) as! [Task]
@@ -76,6 +91,44 @@ class schedule: NSObject {
             fatalError("Failure to save task: \(error)")
         }
 
+    }
+    
+    func copy(task : Task) -> schedule{
+        let temp = schedule()
+        if let i = task.date{
+            temp.date = i
+        }
+        
+        temp.id = Int(task.id)
+        
+        if let i = task.desc{
+            temp.desc = i
+        }
+        if let i = task.begin{
+            temp.begin = i
+        }
+        if let i = task.end{
+            temp.end = i
+        }
+        if let i = task.fin_time{
+            temp.fin_time = i
+        }
+        if let i = task.ram_time{
+            temp.ram_time = i
+        }
+        if let i = task.title{
+            temp.title = i
+        }
+        if let i = task.date{
+            temp.date = i
+        }
+        if let i = task.point_begin{
+            temp.point_begin = i
+        }
+        if let i = task.point_end{
+            temp.point_end = i
+        }
+        return temp
     }
     
 }

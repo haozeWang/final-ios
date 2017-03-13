@@ -28,7 +28,7 @@ class ScheduleDetail: UIViewController {
     var location_end = "chicago"
     var point_begin = "lat=41.881832&lon=-87.623177"
     var point_end = "lat=41.881832&lon=-87.623177"
-    var task : Task!
+    var task : schedule!
     var date_begin: Weather!
     var date_end: Weather!
     var url:String!
@@ -37,6 +37,14 @@ class ScheduleDetail: UIViewController {
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "003.jpg")
         self.view.insertSubview(backgroundImage, at: 0)
+        self.name.text = task.title
+        self.desc.text = task.desc
+       // button.setTitle("Button Title",for: .normal)
+        self.begincityname.setTitle(task.begin, for: .normal)
+        self.endcityname.setTitle(task.end, for: .normal)
+        self.begin_time.text = getstringfromdate_schedule(date: task.fin_time as Date)
+        self.ram_time.text = getstringfromdate_schedule(date: task.ram_time as Date)
+        
         loadcurrdate(flag: 1)
         loadcurrdate(flag: 2)
         let date = NSDate()
@@ -60,7 +68,7 @@ class ScheduleDetail: UIViewController {
         }
         
         SharedNetwork.SharedInstance.grabSomeData(url){(response) -> Void in
-            
+            print(url)
             DispatchQueue.main.async
                 {
                     if let responsedate = response as? [String:AnyObject]
@@ -149,7 +157,16 @@ class ScheduleDetail: UIViewController {
         return UIImage(data: data!)!
     }
     
-  
+    func getstringfromdate_schedule(date : Date) -> String{
+        let dateformatter = DateFormatter()
+        
+        dateformatter.dateFormat = "MM/dd/EEE HH:mm"
+        
+        let now = dateformatter.string(from: date)
+        return now
+        
+    }
+     
 
     /*
     // MARK: - Navigation

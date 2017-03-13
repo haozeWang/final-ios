@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 class EveryDaySchedule: UITableViewController,UIActionSheetDelegate {
     
-    var task: [Task]!
+    var task: [schedule]!
     var date : String!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,22 +52,26 @@ class EveryDaySchedule: UITableViewController,UIActionSheetDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Daytablecell", for: indexPath) as! EveryDayScheduleCell
             let issue = task[indexPath.row]
             cell.title.text = issue.title
-            if let time = issue.fin_time {
-                cell.fin_time.text = createstringfromdate(date: time as Date)}
+            cell.fin_time.text = createstringfromdate(date: issue.fin_time as Date)
             return cell
+    }
 
-        /*
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Daytablecell", for: indexPath) as! EveryDayScheduleCell
-        let issue = task[indexPath.row]
-        cell.title.text = issue.title
-<<<<<<< Updated upstream
-        if let time = issue.fin_time{
-            cell.fin_time.text = createstringfromdate(date: time as Date)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print(task[0].title)
+        if segue.identifier == "showweather"
+        {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let object = task[0]
+                
+                let controller = segue.destination as! ScheduleDetail
+                controller.point_begin = object.point_begin
+                controller.point_begin = object.point_end
+                controller.location_begin = object.begin
+                controller.location_end = object.end
+                print(object.title)
+                controller.task = object
+            }
         }
-        return cell
-=======
-        if let time = issue.fin_time {
-            cell.fin_time.text = createstringfromdate(date: time as Date)}*/
     }
     /*
     func updatadayschedule(){
@@ -102,20 +106,7 @@ class EveryDaySchedule: UITableViewController,UIActionSheetDelegate {
 
     }
     
-       override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showeather"
-        {
-            if let indexPath = self.tableView.indexPathForSelectedRow {
-                let object = task[indexPath.row]
-                let controller = segue.destination as! ScheduleDetail
-                controller.point_begin = object.point_begin!
-                controller.point_begin = object.point_end!
-                controller.location_begin = object.begin!
-                controller.location_end = object.end!
-                controller.task = object
-            }
-        }
-      }
+    
     
 
     /*
