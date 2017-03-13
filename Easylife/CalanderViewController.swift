@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import UserNotifications
+
 private let reuseIdentifier = "Cell"
 
 class CalanderViewController: UIViewController,UITableViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource {
@@ -32,6 +34,12 @@ class CalanderViewController: UIViewController,UITableViewDelegate,UICollectionV
         self.setCollectionViewLayout()
         
         
+        // ask for notification approvals
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {allowed, error in
+            if !allowed {
+                print("Not Allowed!")
+            }
+        })
     }
     
     func setCollectionViewLayout(){

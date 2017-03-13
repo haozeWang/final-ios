@@ -168,6 +168,20 @@ class ScheduleDetail: UIViewController {
     }
      
 
+   
+    @IBAction func getbeginweather(_ sender: Any) {
+        
+        let myVC = storyboard?.instantiateViewController(withIdentifier: "weatherforecast") as! weatherforecast
+        myVC.location_end = point_begin
+        navigationController?.pushViewController(myVC, animated: true)
+        
+    }
+  
+    @IBAction func getendweather(_ sender: Any) {
+        let myVC = storyboard?.instantiateViewController(withIdentifier: "weatherforecast") as! weatherforecast
+        myVC.location_end = point_end
+        navigationController?.pushViewController(myVC, animated: true)
+    }
     /*
     // MARK: - Navigation
 
