@@ -8,8 +8,12 @@
 
 import UIKit
 import CoreData
+<<<<<<< HEAD
 import  UserNotifications
 class EveryDaySchedule: UITableViewController,UIActionSheetDelegate {
+=======
+class EveryDaySchedule: UITableViewController,UIActionSheetDelegate,updateview {
+>>>>>>> de5685c9b352805d2daabdf1a43bcce461b19811
     
     var task: [schedule]!
     var date : String!
@@ -131,6 +135,18 @@ class EveryDaySchedule: UITableViewController,UIActionSheetDelegate {
            tableView.reloadData()
         }
     }
+    
+    func updatadayschedule(){
+        if(date == nil){
+            let currdate = getstringfromdate(date: Date())
+            task =  schedule.scheduleInstance.fetchDate(date: currdate)
+        }
+        else{
+            task =  schedule.scheduleInstance.fetchDate(date: date)
+        }
+        tableView.reloadData()
+    }
+
     
 
     /*

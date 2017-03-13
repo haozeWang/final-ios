@@ -29,7 +29,7 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
     @IBOutlet weak var show_hour: UILabel!
     @IBOutlet weak var show_minute: UILabel!
     @IBOutlet weak var TextField: UITextView!
-    
+    var set_fin_time = false
     
     // information about source and destination
     var sourceLatitude = "0.0"
@@ -64,6 +64,8 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
         Minute.text = "00"
         show_hour.text = "00:"
         show_minute.text = "00"
+        record_date_end = Date()
+        record_date_end = Date()
         setTextField()
         creatday()
         let myGesture = UITapGestureRecognizer(target: self, action:#selector(self.tappedAwayFunction(sender:)) )
@@ -151,7 +153,12 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
     
     
     @IBAction func SubmitSchedule(_ sender: Any) {
-        
+        if(UITextLabel.text == ""){
+            let alert = UIAlertController(title: "Error",message:"Please set the title of this schedule", preferredStyle:UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok,I know", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else{
         let moc = DataController().managedObjectContext
         let temp = Task.init(entity: NSEntityDescription.entity(forEntityName: "Task", in:moc)!, insertInto: moc)
         temp.begin = begin_point.text
@@ -206,6 +213,7 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
         
  
         self.dismiss(animated: true, completion: nil);
+    }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -298,6 +306,7 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
     
     
     @IBAction func SetTime(_ sender: Any) {
+        set_fin_time = true
         changeflag = 1
         if(flag == 1){
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
@@ -388,11 +397,18 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
     
     
     @IBAction func setLocation(_ sender: Any) {
+        if(set_fin_time == false){
+            let alert = UIAlertController(title: "Error",message:"Please choose the finishing time", preferredStyle:UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok,I know", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+       else  {
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "mapNavigationVC") as! UINavigationController
         let vc = navigationVC.viewControllers.first as! MapViewController
         vc.scheduleSetLocationProtocolDelegate = self
         vc.fromScheduleVC = true
         present(navigationVC, animated: true, completion: nil)
+        }
     }
     
     
