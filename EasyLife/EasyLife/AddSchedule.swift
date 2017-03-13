@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate{
     
     @IBOutlet weak var end_point: UILabel!
@@ -167,6 +168,42 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
         temp.point_end = point_end
         print(temp.id)
         schedule.scheduleInstance.insertDate(schedule: temp)
+        
+        // set notifications
+        let center = UNUserNotificationCenter.current()
+        center.getNotificationSettings(completionHandler: {(settings) in
+            if settings.authorizationStatus == .authorized {
+                let content = UNMutableNotificationContent()
+                content.title = temp.title!
+                let description = String(temp.desc!)!
+                
+                let dateformatter = DateFormatter()
+                dateformatter.dateFormat = "MMM dd, EEE HH:mm"
+                let displayTime = dateformatter.string(from: self.getdatefromstring(string: begin))
+                content.body = "At \(displayTime), you have to arrive at \(description)!"
+                content.sound = UNNotificationSound.default()
+                let remindDate = self.getdatefromstring(string: end)
+                let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: remindDate)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate,
+                                                            repeats: false)
+                let identifier = String(temp.id)
+                let request = UNNotificationRequest(identifier: identifier,
+                                                    content: content, trigger: trigger)
+                center.add(request, withCompletionHandler: { (error) in
+                    if let error = error {
+                        // Something went wrong
+                        print(error)
+                    }
+                })
+                
+            } else {
+                // if not allowed
+                print("Notification Not Allowed!")
+            }
+        })
+        
+        
+        
         self.dismiss(animated: true, completion: nil);
  
         self.dismiss(animated: true, completion: nil);

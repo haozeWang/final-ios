@@ -136,7 +136,12 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
             if settings.authorizationStatus == .authorized {
                 let content = UNMutableNotificationContent()
                 content.title = self.temp_field
-                content.body = "You have a schedule \"\(temp.title)\" at: \(end)"
+                let description = String(self.temp_view)!
+                
+                let dateformatter = DateFormatter()
+                dateformatter.dateFormat = "MMM dd, EEE HH:mm"
+                let displayTime = dateformatter.string(from: self.getdatefromstring(string: begin))
+                content.body = "Scheduled Task at:\(displayTime)\n\(description)"
                 content.sound = UNNotificationSound.default()
                 let remindDate = self.getdatefromstring(string: end)
                 let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: remindDate)
