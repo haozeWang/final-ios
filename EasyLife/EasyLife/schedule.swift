@@ -19,6 +19,7 @@ class schedule: NSObject {
     var point_end = ""
     var id = 0
     var end = ""
+    var exp_time = 0
     static let scheduleInstance = schedule()
     
      func insertDate(schedule : Task){
@@ -39,6 +40,7 @@ class schedule: NSObject {
         entity.setValue(schedule.point_begin, forKey: "point_begin")
         entity.setValue(schedule.point_end, forKey: "point_end")
         entity.setValue(schedule.id, forKey: "id")
+        entity.setValue(schedule.exp_time, forKey: "exp_time")
         // we save our entity
         do {
             try moc.save()
@@ -100,7 +102,7 @@ class schedule: NSObject {
         }
         
         temp.id = Int(task.id)
-        
+        temp.exp_time = Int(task.exp_time)
         if let i = task.desc{
             temp.desc = i
         }

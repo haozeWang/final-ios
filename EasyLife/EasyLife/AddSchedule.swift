@@ -166,7 +166,10 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
         temp.id = Int64(Date().timeIntervalSince1970)
         temp.point_begin = point_begin
         temp.point_end = point_end
+        temp.exp_time = Int64(expectedTime)
         print(temp.id)
+        var sche = schedule()
+        sche =  sche.copy(task: temp)
         schedule.scheduleInstance.insertDate(schedule: temp)
         
         // set notifications
@@ -174,8 +177,8 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
         center.getNotificationSettings(completionHandler: {(settings) in
             if settings.authorizationStatus == .authorized {
                 let content = UNMutableNotificationContent()
-                content.title = temp.title!
-                let description = String(temp.desc!)!
+                content.title = sche.title
+                let description = String(sche.desc)!
                 
                 let dateformatter = DateFormatter()
                 dateformatter.dateFormat = "MMM dd, EEE HH:mm"
@@ -186,7 +189,7 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
                 let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: remindDate)
                 let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate,
                                                             repeats: false)
-                let identifier = String(temp.id)
+                let identifier = String(sche.id)
                 let request = UNNotificationRequest(identifier: identifier,
                                                     content: content, trigger: trigger)
                 center.add(request, withCompletionHandler: { (error) in
@@ -202,9 +205,6 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
             }
         })
         
-        
-        
-        self.dismiss(animated: true, completion: nil);
  
         self.dismiss(animated: true, completion: nil);
     }

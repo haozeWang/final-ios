@@ -26,6 +26,7 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
     @IBOutlet weak var YearPickerView: UIPickerView!
     var point = ""
     var updateDelegate: updateview? = nil
+<<<<<<< HEAD
     
     // current location
     var currentLatitude: Double = +41.80285605
@@ -34,6 +35,11 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
     // location manager
     let locationManager = CLLocationManager()
     
+=======
+    var whether_set_begin_time = false
+    var whether_set_rem_time = false
+    var whether_set_title = false
+>>>>>>> 8fa5dc12f812ad6d165a07d5bdba71bd8b423f1e
     var temp_view : String!
     var temp_field : String!
     var flag = 1
@@ -82,7 +88,6 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print(textField.text)
         temp_field = textField.text
         textField.resignFirstResponder()
         return true
@@ -126,10 +131,27 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
     
     
     @IBAction func Submit(_ sender: Any) {
+        if(UITextLabel.text == nil){
+            let alert = UIAlertController(title: "Error",message:"Please set the title of this schedule", preferredStyle:UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok,I know", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            }
+        else if(whether_set_begin_time == false){
+            let alert = UIAlertController(title: "Error",message:"Please choose the time", preferredStyle:UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok,I know", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            }
+        else if(whether_set_rem_time == false){
+            let alert = UIAlertController(title: "Error",message:"Please choose the reminder time", preferredStyle:UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok,I know", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+        }
+        else{
         let moc = DataController().managedObjectContext
         let temp = Task.init(entity: NSEntityDescription.entity(forEntityName: "Task", in:moc)!, insertInto: moc)
-        temp.begin = ""
-        temp.end = ""
+        temp.begin = "Chicago"
+        temp.end = "Chicago"
         temp.desc = temp_view
         temp.title = temp_field
         let begin = "\(createstringfromdate(date: record_date_begin)) \(hours.text! as String)\(Minute.text! as String)"
@@ -138,8 +160,8 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
         temp.ram_time = getdatefromstring(string: end) as NSDate?
         temp.date = getstringfromdate_yy(date: temp.fin_time as! Date)
         temp.id = Int64(Date().timeIntervalSince1970)
-        temp.point_begin = ""
-        temp.point_end = ""
+        temp.point_begin = "lat=41.881832&lon=-87.623177"
+        temp.point_end = "lat=41.881832&lon=-87.623177"
         print(temp.id)
         schedule.scheduleInstance.insertDate(schedule: temp)
         updateDelegate?.updatadayschedule()
@@ -182,10 +204,14 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
                 self.present(alert, animated: true, completion: nil)
             }
         })
+       
         
+<<<<<<< HEAD
         
-        
-        
+=======
+        self.dismiss(animated: true, completion: nil);
+        }
+>>>>>>> 8fa5dc12f812ad6d165a07d5bdba71bd8b423f1e
     }
     
     
@@ -327,6 +353,7 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
         return now
     }
     
+    
     func getdatefromstring(string: String)->Date{
         let formatter = DateFormatter()
         formatter.dateFormat = "yy/MM/dd/EEE HH:mm"
@@ -334,6 +361,7 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
     }
 
     @IBAction func SetBeginTime(_ sender: Any) {
+        whether_set_begin_time = true
         if(flag == 1){
             UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseOut, animations: {
                 self.UIPickerView.center.y = 500
@@ -361,6 +389,7 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
  
     
     @IBAction func SetRemTime(_ sender: Any) {
+        whether_set_rem_time = true
         if(flag == 1){
             changeflag = 2
             SetBeginTime.isEnabled = false
@@ -388,7 +417,7 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
         }
 
     }
-
+    
     /*
     // MARK: - Navigation
 
