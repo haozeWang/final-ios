@@ -392,6 +392,7 @@ class AddSchedule: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPi
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "mapNavigationVC") as! UINavigationController
         let vc = navigationVC.viewControllers.first as! MapViewController
         vc.scheduleSetLocationProtocolDelegate = self
+        vc.fromScheduleVC = true
         present(navigationVC, animated: true, completion: nil)
     }
     

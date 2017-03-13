@@ -43,6 +43,13 @@ class MapViewController: UIViewController {
     var activity = UIActivityIndicatorView()
     var whiteView = UIView()
     
+    // whether we come to this viewController from a schedule view controller
+    var fromScheduleVC = false
+    
+    @IBOutlet weak var backButton: UIButton!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -92,11 +99,24 @@ class MapViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
         
-        
-        
         // initialize the bottom view
         initBottomView()
+        
+        // add a dismiss button if this view controller comes from a schedule view controller
+        if fromScheduleVC == false {
+            backButton.isHidden = true
+            backButton.isUserInteractionEnabled = false
+        }
     }
+    
+    
+    @IBAction func goBack(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+
+
+    
+    
     
     
     // initialize the bottom view
