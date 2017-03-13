@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate{
 
     @IBOutlet weak var UITextLabel: UITextField!
@@ -128,6 +129,37 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
         print(temp.id)
         schedule.scheduleInstance.insertDate(schedule: temp)
         updateDelegate?.updatadayschedule()
+        
+        // set notifications
+        let center = UNUserNotificationCenter.current()
+        center.getNotificationSettings(completionHandler: {(settings) in
+            if settings.authorizationStatus == .authorized {
+                let content = UNMutableNotificationContent()
+                content.title = self.temp_field
+                content.body = "You have a schedule \"\(temp.title)\" at: \(end)"
+                content.sound = UNNotificationSound.default()
+                let remindDate = self.getdatefromstring(string: end)
+                let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: remindDate)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate,
+                                                            repeats: false)
+                let identifier = String(temp.id)
+                let request = UNNotificationRequest(identifier: identifier,
+                                                    content: content, trigger: trigger)
+                center.add(request, withCompletionHandler: { (error) in
+                    if let error = error {
+                        // Something went wrong
+                        print(error)
+                    }
+                })
+                
+            } else {
+                // if not allowed
+                print("Notification Not Allowed!")
+            }
+        })
+        
+        
+        
         self.dismiss(animated: true, completion: nil);
     }
     
