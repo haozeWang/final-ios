@@ -98,7 +98,7 @@ class weatherforecast: UIViewController,UICollectionViewDataSource,UICollectionV
     }
     
     func getdata(){
-       let  url = "http://api.openweathermap.org/data/2.5/forecast?q=\(location_end)&appid=e5ad7ed727b66d69dc3c323ad8b8fd71"
+       let  url = "http://api.openweathermap.org/data/2.5/forecast?\(location_end)&appid=e5ad7ed727b66d69dc3c323ad8b8fd71"
         SharedNetwork.SharedInstance.grabSomeData(url){(response) -> Void in
             
             DispatchQueue.main.async
@@ -116,7 +116,7 @@ class weatherforecast: UIViewController,UICollectionViewDataSource,UICollectionV
     
     func getcurrdata(){
         
-    let url = "http://api.openweathermap.org/data/2.5/weather?q=\(location_end)&appid=e5ad7ed727b66d69dc3c323ad8b8fd71"
+    let url = "http://api.openweathermap.org/data/2.5/weather?\(location_end)&appid=e5ad7ed727b66d69dc3c323ad8b8fd71"
     
     
     SharedNetwork.SharedInstance.grabSomeData(url){(response) -> Void in
