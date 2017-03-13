@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-class EveryDaySchedule: UITableViewController,UIActionSheetDelegate {
+class EveryDaySchedule: UITableViewController,UIActionSheetDelegate,updateview {
     
     var task: [schedule]!
     var date : String!
@@ -123,6 +123,18 @@ class EveryDaySchedule: UITableViewController,UIActionSheetDelegate {
            tableView.reloadData()
         }
     }
+    
+    func updatadayschedule(){
+        if(date == nil){
+            let currdate = getstringfromdate(date: Date())
+            task =  schedule.scheduleInstance.fetchDate(date: currdate)
+        }
+        else{
+            task =  schedule.scheduleInstance.fetchDate(date: date)
+        }
+        tableView.reloadData()
+    }
+
     
 
     /*

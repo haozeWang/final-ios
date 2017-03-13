@@ -33,7 +33,7 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
     
     // location manager
     let locationManager = CLLocationManager()
-    
+    var update: updateview? = nil
     var whether_set_begin_time = false
     var whether_set_rem_time = false
     var whether_set_title = false
@@ -206,7 +206,7 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
         })
        
         
-        
+        update?.updatadayschedule()
         self.dismiss(animated: true, completion: nil);
         }
     }
