@@ -51,6 +51,9 @@ class AddTask: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPicker
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "schedule.jpeg")
+        self.view.insertSubview(backgroundImage, at: 0)
         TextField.delegate = self
         YearPickerView.delegate = self
         YearPickerView.dataSource = self
